@@ -1,7 +1,7 @@
 /*
  * Main.java
  * Auteur: Alexandre Schweizer
- * Date de création: 30 avr. 2018
+ * Date de crï¿½ation: 30 avr. 2018
  */
 
 package main;
@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Test") ;
+		System.out.println("hello world") ;
 
 	}
 
