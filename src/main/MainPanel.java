@@ -35,6 +35,7 @@ public class MainPanel extends JPanel {
 		label.add(galleryButton);
 		label.add(calculatorButton);
 		label.add(app);
+		
 		add(label,BorderLayout.SOUTH);
 		
 		clock.setOpaque(false);

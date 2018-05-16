@@ -23,6 +23,7 @@ public class MainFrame extends JFrame {
 	private MainPanel mainScreen = new MainPanel();
 	private ImageIcon image = new ImageIcon("Images/screen.jpg");
 	private JLabel label = new JLabel();
+	private MenuButtonPanel homebutton = new MenuButtonPanel();
 	
 	
 	
@@ -37,10 +38,10 @@ public class MainFrame extends JFrame {
 		
 		
 	
-	add(mainScreen, BorderLayout.CENTER);
+	this.add(homebutton, BorderLayout.SOUTH);
 	this.setUndecorated(true); // mets le JFrame sans bordures
 	
-	
+	// changement des bordures du JFrame via componentListner 
 	this.addComponentListener(new ComponentAdapter() {
         @Override
          public void componentResized(ComponentEvent e) {
@@ -53,7 +54,6 @@ public class MainFrame extends JFrame {
 	
 	
 	
-	//this.setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),20,40));
 	this.setResizable(false);
 	this.setSize(270, 540);
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
