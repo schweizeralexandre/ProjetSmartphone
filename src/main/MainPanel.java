@@ -5,10 +5,13 @@ import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
 
 
 
@@ -21,7 +24,8 @@ public class MainPanel extends JPanel {
 	private JButton contactButton = new ButtonClass("Images/ContactIcon.png");
 	private JButton galleryButton = new ButtonClass("Images/PhotosICon.png");
 	private JButton calculatorButton = new ButtonClass("Images/CalculatorIcon.png");
-	private JButton app = new ButtonClass("Images/AppTodefine.png");
+	private JButton appButton = new ButtonClass("Images/AppTodefine.png");
+
 	
 	
 	
@@ -34,7 +38,7 @@ public class MainPanel extends JPanel {
 		label.add(contactButton);
 		label.add(galleryButton);
 		label.add(calculatorButton);
-		label.add(app);
+		label.add(appButton);
 		
 		add(label,BorderLayout.SOUTH);
 		
@@ -42,14 +46,12 @@ public class MainPanel extends JPanel {
 		add(clock,BorderLayout.NORTH);
 		
 		
-		// ajout des actions listners
+		contactButton.addActionListener(new ActionClass());
+		galleryButton.addActionListener(new ActionClass());
+		calculatorButton.addActionListener(new ActionClass());
 		
 		
-		
-		
-		
-		
-		
+
 	}
 
 	protected void paintComponent(Graphics g) {
@@ -62,7 +64,42 @@ public class MainPanel extends JPanel {
 	}
 
 	
+     
+	public class ActionClass implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			if(e.getSource()== contactButton) {
+				 MainFrame.changePanel("ContactPanel");
+			}
+				if(e.getSource()==galleryButton) {
+					MainFrame.changePanel("GalleryPanel");
+				}
+				else
+					if(e.getSource()==calculatorButton) {
+						MainFrame.changePanel("CalculatorPanel");
+					}
+				
+			
+			
+			
+		}
+
+	}
+
+
+
+
+
+
+	
+	
+	
 	
 	
 
 }
+
+

@@ -1,5 +1,7 @@
 package Calculator;
 
-public class CalculatorPanel {
+import javax.swing.*;
+
+public class CalculatorPanel extends JPanel {
 
 }

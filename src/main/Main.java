@@ -11,8 +11,8 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		MainFrame phone = new MainFrame();
-		phone.setVisible(true);
+		MainFrame MyIphone = new MainFrame();
+		MyIphone.setVisible(true);
 		
 		
 		

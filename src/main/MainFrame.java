@@ -3,42 +3,49 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
-
-
-
-
-
+import Calculator.CalculatorPanel;
+import Contacts.ContactPanel;
+import Gallery_Photos.GalleryPanel;
 
 
 
 
 public class MainFrame extends JFrame {
 	
-	private static CardLayout cardLayout;
-	private static JPanel cards;
+	
+
+	private static CardLayout cl = new CardLayout();
+	
+	// panel qui permet de gérer le cardLayout
+	private static JPanel cards = new JPanel();
+	
 	private MainPanel mainScreen = new MainPanel();
+	private GalleryPanel gallery = new GalleryPanel();
+	private ContactPanel contacts = new ContactPanel();
+	private CalculatorPanel calculator = new CalculatorPanel();
 	private ImageIcon image = new ImageIcon("Images/screen.jpg");
 	private JLabel label = new JLabel();
 	private MenuButtonPanel homebutton = new MenuButtonPanel();
+	private TopScreenPanel topscreen = new TopScreenPanel();
 	
 	
 	
 	
 	public MainFrame() {
 		
-		cards = new JPanel (cardLayout = new CardLayout());
-		cards.add(mainScreen, "launcherJPanel");
-		add(cards, BorderLayout.CENTER);
-		this.add(mainScreen,BorderLayout.CENTER);
-		
-		
 		
 	
+		
+		
+		
+	this.add(mainScreen,BorderLayout.CENTER);
 	this.add(homebutton, BorderLayout.SOUTH);
+	this.add(topscreen, BorderLayout.NORTH);
 	this.setUndecorated(true); // mets le JFrame sans bordures
 	
 	// changement des bordures du JFrame via componentListner 
@@ -52,6 +59,17 @@ public class MainFrame extends JFrame {
 	
 	
 	
+	cards.setLayout(cl);
+	cards.add(mainScreen, "MainScreenPanel");
+	cards.add(contacts, "ContactPanel");
+	cards.add(gallery, "GalleryPanel");
+	cards.add(calculator, "CalculatorPanel");
+	cards.setBackground(new Color(0,0,0,0));
+	
+	
+	add(cards, BorderLayout.CENTER);
+	
+	
 	
 	
 	this.setResizable(false);
@@ -60,15 +78,21 @@ public class MainFrame extends JFrame {
 	this.setLocationRelativeTo(null);
 
 	
-		
-		
+
 		
 		
 		
 	}
 	
+    // méthode qui permet de changer les panels via les boutons
+	public static void changePanel(String name){
+		cl.show(cards, name);
+    }
+
+}
+	
 	
 	
 	
 
-}
+
