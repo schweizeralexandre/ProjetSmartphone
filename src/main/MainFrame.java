@@ -10,6 +10,7 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
 import Calculator.CalculatorPanel;
 import Contacts.ContactPanel;
+import Contacts.NewContactPanel;
 import Gallery_Photos.GalleryPanel;
 
 
@@ -27,6 +28,7 @@ public class MainFrame extends JFrame {
 	private MainPanel mainScreen = new MainPanel();
 	private GalleryPanel gallery = new GalleryPanel();
 	private ContactPanel contacts = new ContactPanel();
+	private NewContactPanel newcontact = new NewContactPanel();
 	private CalculatorPanel calculator = new CalculatorPanel();
 	private ImageIcon image = new ImageIcon("Images/screen.jpg");
 	private JLabel label = new JLabel();
@@ -62,6 +64,7 @@ public class MainFrame extends JFrame {
 	cards.setLayout(cl);
 	cards.add(mainScreen, "MainScreenPanel");
 	cards.add(contacts, "ContactPanel");
+	cards.add(newcontact, "NewContact");
 	cards.add(gallery, "GalleryPanel");
 	cards.add(calculator, "CalculatorPanel");
 	cards.setBackground(new Color(0,0,0,0));
