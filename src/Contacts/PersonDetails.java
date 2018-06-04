@@ -1,65 +1,84 @@
 package Contacts;
 
-public class PersonDetails {
+import java.io.Serializable;
+
+public class PersonDetails implements Serializable {
 
 	private String surname;
 	private String name;
 	private String email;
-	private int homeNum;
-	private int personalNum;
-	private int companyNum;
+	private String num1;
+	private String num2;
 	
 	
-	
-	public PersonDetails(String surname, String name, String email, int homeNum, int personalNum, int companyNum) {
+	public PersonDetails(String surname, String name, String email, String num1, String num2) {
 		super();
 		this.surname = surname;
 		this.name = name;
 		this.email = email;
-		this.homeNum = homeNum;
-		this.personalNum = personalNum;
-		this.companyNum = companyNum;
+		this.num1 = num1;
+		this.num2 = num2;
 	}
-	
-	
-	
+
+
 	public String getSurname() {
 		return surname;
 	}
+
+
 	public String getName() {
 		return name;
 	}
+
+
 	public String getEmail() {
 		return email;
 	}
-	public int getHomeNum() {
-		return homeNum;
+
+
+	public String getNum1() {
+		return num1;
 	}
-	public int getPersonalNum() {
-		return personalNum;
+
+
+	public String getNum2() {
+		return num2;
 	}
-	public int getCompanyNum() {
-		return companyNum;
-	}
+
+
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
 	public void setEmail(String email) {
-		email = email;
+		this.email = email;
 	}
-	public void setHomeNum(int homeNum) {
-		this.homeNum = homeNum;
+
+
+	public void setNum1(String num1) {
+		this.num1 = num1;
 	}
-	public void setPersonalNum(int personalNum) {
-		this.personalNum = personalNum;
-	}
-	public void setCompanyNum(int companyNum) {
-		this.companyNum = companyNum;
+
+
+	public void setNum2(String num2) {
+		this.num2 = num2;
+		
 	}
 	
+	
+	
+	
+
+	
+	
+	
+
     
 	
 	
