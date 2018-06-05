@@ -42,7 +42,7 @@ public class NewContactPanel extends BasicPanel {
 	private JTextField [] champs = new JTextField[5];
 	private JComboBox [] tel = new JComboBox[2];
 	private String[]telTypes = {"Domicile","Prive","Travail"};
-	private ArrayList<PersonDetails> person = new ArrayList<>();
+	private ArrayList<PersonDetails> person;
 	private ArrayList<Button> contactLabels = new ArrayList<>();
 	private ContactPanel pan;
 
@@ -54,12 +54,10 @@ public class NewContactPanel extends BasicPanel {
 	public NewContactPanel(ContactPanel pan) {
 		
 	
-		
-		
 		 
 		this.pan = pan;
 
-		getbackButtons();  
+		
 		perzonaliszeButton(Cancelbut);
 		perzonaliszeButton(Okbut);
 		
@@ -74,7 +72,7 @@ public class NewContactPanel extends BasicPanel {
 		newContactLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 	
-		
+		 getbackButtons(); 
 		    
 		
 		//addimage.setHorizontalAlignment(SwingConstants.CENTER);
@@ -263,16 +261,35 @@ public class NewContactPanel extends BasicPanel {
 			  
 			   
 			    
-			    
-			  for(int i = 0; i < contactLabels.size(); i++) {
+			    pan.savedContacts.removeAll();
+			    contactLabels.clear();
+			 for(int i = 0; i < person.size(); i++) {
+				Button temp =new Button(person.get(i).getName()+person.get(i).getSurname(),i);
 				
+				
+				temp.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						MainFrame.changePanel("contactView");
+						System.out.println("ok");
+					}
+				});
+				   contactLabels.add(temp);
 				   contactLabels.get(i).setMaximumSize(new Dimension(300, 50));
 				   pan.savedContacts.add(contactLabels.get(i));
+				  
 			}
-				
+			 for(int i = 0; i < person.size(); i++) {
+					
+				   System.out.println( person.get(i).getName());
+				  
+			}
+			 MainFrame.changePanel("ContactPanel");
 				
 			    
-				MainFrame.changePanel("ContactPanel");
+				
 				
 				for (int i = 0; i < champs.length; i++) {
 					// on enlève les caractères saisis
@@ -316,18 +333,33 @@ public class NewContactPanel extends BasicPanel {
 				person = deserializeObject("Contacts/contacts.ser");
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				person =new ArrayList<PersonDetails>();
 			}
 			   
-			 
+			pan.savedContacts.removeAll();
 		    for (int i = 0; i < person.size(); i++) {
-			
-			   contactLabels.add(new Button(person.get(i).getName()+person.get(i).getSurname(),i));
+	Button temp =new Button(person.get(i).getName()+person.get(i).getSurname(),i);
+				
+				
+				temp.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						MainFrame.changePanel("contactView");
+						System.out.println("ok");
+					}
+				});
+				   contactLabels.add(temp);
+			//   contactLabels.add(new Button(person.get(i).getName()+person.get(i).getSurname(),i));
 			   pan.savedContacts.add(contactLabels.get(i));
 			   contactLabels.get(i).setMaximumSize(new Dimension(300, 50));
-				  
+
 		   }   
 		
+			
+			
+			
 			  
 		}
 

@@ -1,15 +1,20 @@
 package Contacts;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 
-public class Button extends JButton {
+public class Button extends JButton implements ActionListener{
 
 	private String name;
 	private int id;
-	
+	private ArrayList<PersonDetails> person;
 	
 	public Button(String name, int id) {
 		
+		this.person = person;
 		this.name = name;
 		this.id = id;
 		setText(name);
@@ -27,6 +32,13 @@ public class Button extends JButton {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

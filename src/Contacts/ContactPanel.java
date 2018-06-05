@@ -45,43 +45,8 @@ public class ContactPanel extends BasicPanel {
     
     
     
-    
-	for (int i = 0; i < butpan.getContactLabels().size(); i++) {
-		
-		butpan.getContactLabels().get(i).addActionListener(new ActionViewContact());
+   
 	}
-	
-    
-  
-		
-	}
-	
-
-	
-  public class ActionViewContact implements ActionListener{
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		for (int i = 0; i < butpan.getPerson().size(); i++) {
-			
-			if(e.getSource()==butpan.getContactLabels())
-		
-			MainFrame.changePanel("contactView");
-			
-		}
-		
-		
-	}
-	  
-	  
-	  
-	  
-	  
-	  
-  }
-	
-	
 	
 
 }
