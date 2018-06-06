@@ -53,7 +53,7 @@ public class NewContactPanel extends BasicPanel {
 	
 	public NewContactPanel(ContactPanel pan) {
 		
-	
+
 		 
 		this.pan = pan;
 
@@ -263,8 +263,9 @@ public class NewContactPanel extends BasicPanel {
 			    
 			    pan.savedContacts.removeAll();
 			    contactLabels.clear();
-			 for(int i = 0; i < person.size(); i++) {
-				Button temp =new Button(person.get(i).getName()+person.get(i).getSurname(),i);
+			    
+			    for(int i = 0; i < person.size(); i++) {
+				Button temp =new Button(person.get(i).getName()+" "+person.get(i).getSurname(),i);
 				
 				
 				temp.addActionListener(new ActionListener() {
@@ -273,7 +274,7 @@ public class NewContactPanel extends BasicPanel {
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
 						MainFrame.changePanel("contactView");
-						System.out.println("ok");
+						//System.out.println("ok");
 					}
 				});
 				   contactLabels.add(temp);
@@ -281,12 +282,12 @@ public class NewContactPanel extends BasicPanel {
 				   pan.savedContacts.add(contactLabels.get(i));
 				  
 			}
-			 for(int i = 0; i < person.size(); i++) {
+			 /*for(int i = 0; i < person.size(); i++) {
 					
 				   System.out.println( person.get(i).getName());
 				  
-			}
-			 MainFrame.changePanel("ContactPanel");
+			}*/
+			MainFrame.changePanel("ContactPanel");
 				
 			    
 				
@@ -338,7 +339,7 @@ public class NewContactPanel extends BasicPanel {
 			   
 			pan.savedContacts.removeAll();
 		    for (int i = 0; i < person.size(); i++) {
-	Button temp =new Button(person.get(i).getName()+person.get(i).getSurname(),i);
+	         Button temp =new Button(person.get(i).getName()+" "+person.get(i).getSurname(),i);
 				
 				
 				temp.addActionListener(new ActionListener() {
@@ -347,7 +348,7 @@ public class NewContactPanel extends BasicPanel {
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
 						MainFrame.changePanel("contactView");
-						System.out.println("ok");
+						//System.out.println("ok");
 					}
 				});
 				   contactLabels.add(temp);
@@ -357,10 +358,7 @@ public class NewContactPanel extends BasicPanel {
 
 		   }   
 		
-			
-			
-			
-			  
+				  
 		}
 
 		public ArrayList<Button> getContactLabels() {

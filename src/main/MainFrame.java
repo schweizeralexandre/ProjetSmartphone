@@ -43,7 +43,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		
 	for (int i = 0; i < newcontact.getPerson().size(); i++) {
-		contactview = new ContactViewPanel(newcontact.getPerson(),i);
+		contactview = new ContactViewPanel(newcontact.getPerson(),i,newcontact);
 	}
 		
 		

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-public class Button extends JButton implements ActionListener{
+public class Button extends JButton{
 
 	private String name;
 	private int id;
@@ -35,11 +35,10 @@ public class Button extends JButton implements ActionListener{
 	}
 
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+
+
+
 	
 	
 	
