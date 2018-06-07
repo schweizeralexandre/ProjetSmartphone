@@ -1,5 +1,6 @@
 package Contacts;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Button extends JButton{
 		this.name = name;
 		this.id = id;
 		setText(name);
+		this.setMaximumSize(new Dimension(300, 50));
 	}
 	
 	

@@ -36,18 +36,18 @@ public class MainFrame extends JFrame {
 	private JLabel label = new JLabel();
 	private MenuButtonPanel homebutton = new MenuButtonPanel();
 	private TopScreenPanel topscreen = new TopScreenPanel();
-	public ContactViewPanel contactview;
-	private NewContactPanel newcontact = new NewContactPanel(contacts,contactview);
+	//public ContactViewPanel contactview;
+	//private NewContactPanel newcontact = new NewContactPanel(contacts,contactview);
 	
 	
 	
 	public MainFrame() {
 		
-	for (int i = 0; i < newcontact.getPerson().size(); i++) {
-		contactview = new ContactViewPanel(newcontact.getPerson(),i,newcontact);
+	/*for (int i = 0; i < newcontact.getPerson().size(); i++) {
+		contactview = new ContactViewPanel(newcontact.getPerson(),newcontact);
 		System.out.println( newcontact.getPerson().size());
 	}
-		
+		*/
 		
 		
 	
@@ -75,8 +75,8 @@ public class MainFrame extends JFrame {
 	cards.setLayout(cl);
 	cards.add(mainScreen, "MainScreenPanel");
 	cards.add(contacts, "ContactPanel");
-	cards.add(newcontact, "NewContact");
-	cards.add(contactview,"contactView");
+	/*cards.add(newcontact, "NewContact");
+	cards.add(contactview,"contactView");*/
 	cards.add(gallery, "GalleryPanel");
 	cards.add(calculator, "CalculatorPanel");
 	cards.setBackground(new Color(0,0,0,0));

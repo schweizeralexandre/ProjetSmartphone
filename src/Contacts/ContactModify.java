@@ -1,6 +1,7 @@
 package Contacts;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,22 +14,27 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-
-import javax.swing.*;
-
-
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import main.BasicPanel;
-import main.MainFrame;
 
-public class NewContactPanel extends BasicPanel {
 
+public class ContactModify extends BasicPanel{
+
+	private ContactPanel contactPanel;
+	private CardLayout cards;
+	private ArrayList<PersonDetails> person;
 	private JPanel TopNewcontactPanel = new BasicPanel();
 	private JPanel contactDetailsPanel = new BasicPanel();
 	private JPanel photoPanel = new BasicPanel();
@@ -42,21 +48,19 @@ public class NewContactPanel extends BasicPanel {
 	private JTextField [] champs = new JTextField[5];
 	private JComboBox [] tel = new JComboBox[2];
 	private String[]telTypes = {"Domicile","Prive","Travail"};
-	private ArrayList<PersonDetails> person;
-	private ArrayList<Button> contactLabels = new ArrayList<>();
-	private ContactPanel pan;
-	private ContactViewPanel contactview;
 	
-	
-	
-	
-	public NewContactPanel(ContactPanel pan, ContactViewPanel contactview) {
-		this.contactview=contactview;
-	
+
+	public ContactModify(ContactPanel contactPanel, CardLayout cards, ArrayList<PersonDetails> person) {
 		
 		
-		this.pan = pan;
-        
+		
+		
+		
+		this.contactPanel = contactPanel;
+		this.cards = cards;
+		this.person = person;
+		
+		
 		
 		perzonaliszeButton(Cancelbut);
 		perzonaliszeButton(Okbut);
@@ -71,20 +75,8 @@ public class NewContactPanel extends BasicPanel {
 		// fait centrer le texte dans le JLabel
 		newContactLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-	
-		 getbackButtons(); 
-		    
 		
-		//addimage.setHorizontalAlignment(SwingConstants.CENTER);
-	
-	
-		
-		
-		
-		
-		
-		
-		for (int i = 0; i < champs.length; i++) {
+         for (int i = 0; i < champs.length; i++) {
 			
 			champs[i] = new JTextField("",10);
 		    champs[i].setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
@@ -158,11 +150,11 @@ public class NewContactPanel extends BasicPanel {
 		this.add(contactDetailsPanel,BorderLayout.CENTER);
 		
 		
+
 		
 		
 	}
-	
-     public JButton perzonaliszeButton(JButton but) {
+    public JButton perzonaliszeButton(JButton but) {
 		
 		but.setBackground(Color.WHITE);
 		but.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -175,17 +167,14 @@ public class NewContactPanel extends BasicPanel {
 		
 		return but;
 	}
-     
- 	 
-
 	
-	public class ActionClass implements ActionListener{
+    public class ActionClass implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource() == Cancelbut) {
-				MainFrame.changePanel("ContactPanel");
+				cards.show(contactPanel, "contactlist");
 				
 				for (int i = 0; i < champs.length; i++) {
 					// on enlève les caractères saisis
@@ -263,9 +252,9 @@ public class NewContactPanel extends BasicPanel {
 			  
 			   
 			    
-			    pan.savedContacts.removeAll();
-			    contactLabels.clear();
-			    
+			  /*  pan.savedContacts.removeAll();
+			    contactLabels.clear();*/
+			    /*
 			    for(int i = 0; i < person.size(); i++) {
 				Button temp =new Button(person.get(i).getName()+" "+person.get(i).getSurname(),i);
 				
@@ -288,13 +277,13 @@ public class NewContactPanel extends BasicPanel {
 				   contactLabels.get(i).setMaximumSize(new Dimension(300, 50));
 				   pan.savedContacts.add(contactLabels.get(i));
 					
-			}
+			}*/
 			 /*for(int i = 0; i < person.size(); i++) {
 					
 				   System.out.println( person.get(i).getName());
 				  
-			}*/
-			MainFrame.changePanel("ContactPanel");
+			}*/    contactPanel.affichecontact(contactPanel.getContactlist().getScrollPanel());
+			       cards.show(contactPanel,"contactlist");
 			
 				
 				
@@ -303,15 +292,17 @@ public class NewContactPanel extends BasicPanel {
 					champs[i].setText(null);
 				}
 				
+				
+				
+				
+				
 			}
 			
 		}
 		
 	}
 	
-
-
-		public void serializeObject(ArrayList<PersonDetails> person) throws IOException 
+	public void serializeObject(ArrayList<PersonDetails> person) throws IOException 
 	{
 		FileOutputStream fichier = new FileOutputStream("Contacts/contacts.ser");
 		BufferedOutputStream bfichier = new BufferedOutputStream(fichier);
@@ -333,62 +324,7 @@ public class NewContactPanel extends BasicPanel {
 			obfichier.close();
 			return personne;
 		}
-
-		public void getbackButtons() {
-			
-			try {
-				person = deserializeObject("Contacts/contacts.ser");
-			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				person =new ArrayList<PersonDetails>();
-			}
-			   
-			pan.savedContacts.removeAll();
-		    for (int i = 0; i < person.size(); i++) {
-	         Button temp =new Button(person.get(i).getName()+" "+person.get(i).getSurname(),i);
-				
-				
-				temp.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						MainFrame.changePanel("contactView");
-						//System.out.println("ok");
-					}
-				});
-				   contactLabels.add(temp);
-			//   contactLabels.add(new Button(person.get(i).getName()+person.get(i).getSurname(),i));
-			   pan.savedContacts.add(contactLabels.get(i));
-			   contactLabels.get(i).setMaximumSize(new Dimension(300, 50));
-
-		   }   
-		
-				  
-		}
-
-		public ArrayList<Button> getContactLabels() {
-			return contactLabels;
-		}
-
-		public void setContactLabels(ArrayList<Button> contactLabels) {
-			this.contactLabels = contactLabels;
-		}
-
-		public ArrayList<PersonDetails> getPerson() {
-			return person;
-		}
-
-		public void setPerson(ArrayList<PersonDetails> person) {
-			this.person = person;
-		}
-		
-		
-		
-		
-		
+	
+	
 	
 }
-
-
-

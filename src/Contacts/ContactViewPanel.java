@@ -33,7 +33,7 @@ public class ContactViewPanel extends BasicPanel{
     protected JLabel contactName = new JLabel();
     private JLabel[] contactInfo = new JLabel[3];
 	
-	public ContactViewPanel(ArrayList<PersonDetails>person,int id, NewContactPanel newcontactpan) {
+	public ContactViewPanel(ArrayList<PersonDetails>person,NewContactPanel newcontactpan) {
 		
 		this.person = person;
 		this.newcontactpan = newcontactpan;
