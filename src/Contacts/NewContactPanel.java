@@ -45,18 +45,18 @@ public class NewContactPanel extends BasicPanel {
 	private ArrayList<PersonDetails> person;
 	private ArrayList<Button> contactLabels = new ArrayList<>();
 	private ContactPanel pan;
-
+	private ContactViewPanel contactview;
 	
 	
 	
 	
+	public NewContactPanel(ContactPanel pan, ContactViewPanel contactview) {
+		this.contactview=contactview;
 	
-	public NewContactPanel(ContactPanel pan) {
 		
-
-		 
+		
 		this.pan = pan;
-
+        
 		
 		perzonaliszeButton(Cancelbut);
 		perzonaliszeButton(Okbut);
@@ -242,8 +242,10 @@ public class NewContactPanel extends BasicPanel {
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==Okbut) {
-		
-			person.add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
+
+		    	person.add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
+			
+			
 						
 			    try {
 			    	
@@ -271,16 +273,16 @@ public class NewContactPanel extends BasicPanel {
 				temp.addActionListener(new ActionListener() {
 					
 					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						// TODO Auto-generated method stub
+					public void actionPerformed(ActionEvent e) {
+						
 						MainFrame.changePanel("contactView");
-						//System.out.println("ok");
+						
 					}
 				});
 				   contactLabels.add(temp);
 				   contactLabels.get(i).setMaximumSize(new Dimension(300, 50));
 				   pan.savedContacts.add(contactLabels.get(i));
-				  
+					
 			}
 			 /*for(int i = 0; i < person.size(); i++) {
 					
@@ -288,7 +290,11 @@ public class NewContactPanel extends BasicPanel {
 				  
 			}*/
 			MainFrame.changePanel("ContactPanel");
-				
+			
+			for (int i = 0; i < person.size(); i++) {
+
+				contactview = new ContactViewPanel(person,i,this);
+			}
 			    
 				
 				

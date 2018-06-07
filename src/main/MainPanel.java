@@ -24,7 +24,7 @@ public class MainPanel extends JPanel {
 	private JButton contactButton = new ButtonClass("Images/ContactIcon.png");
 	private JButton galleryButton = new ButtonClass("Images/PhotosICon.png");
 	private JButton calculatorButton = new ButtonClass("Images/CalculatorIcon.png");
-	private JButton appButton = new ButtonClass("Images/AppTodefine.png");
+	private JButton appButton = new ButtonClass("Images/weather.png");
 
 	
 	

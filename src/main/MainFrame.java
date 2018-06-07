@@ -30,13 +30,14 @@ public class MainFrame extends JFrame {
 	private MainPanel mainScreen = new MainPanel();
 	private GalleryPanel gallery = new GalleryPanel();
 	private ContactPanel contacts = new ContactPanel();
-	private NewContactPanel newcontact = new NewContactPanel(contacts);
+
 	private CalculatorPanel calculator = new CalculatorPanel();
 	private ImageIcon image = new ImageIcon("Images/screen.jpg");
 	private JLabel label = new JLabel();
 	private MenuButtonPanel homebutton = new MenuButtonPanel();
 	private TopScreenPanel topscreen = new TopScreenPanel();
-	private ContactViewPanel contactview; 
+	public ContactViewPanel contactview;
+	private NewContactPanel newcontact = new NewContactPanel(contacts,contactview);
 	
 	
 	
@@ -44,6 +45,7 @@ public class MainFrame extends JFrame {
 		
 	for (int i = 0; i < newcontact.getPerson().size(); i++) {
 		contactview = new ContactViewPanel(newcontact.getPerson(),i,newcontact);
+		System.out.println( newcontact.getPerson().size());
 	}
 		
 		

@@ -10,10 +10,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+
 
 import main.BasicPanel;
 import main.MainFrame;
@@ -28,7 +30,7 @@ public class ContactViewPanel extends BasicPanel{
     private ArrayList<PersonDetails> person ;
     private NewContactPanel newcontactpan;
     private JLabel contactImage = new JLabel();
-    private JLabel contactName = new JLabel();
+    protected JLabel contactName = new JLabel();
     private JLabel[] contactInfo = new JLabel[3];
 	
 	public ContactViewPanel(ArrayList<PersonDetails>person,int id, NewContactPanel newcontactpan) {
@@ -44,15 +46,13 @@ public class ContactViewPanel extends BasicPanel{
 		modifier.addActionListener(new ActionContactModify());
 		
 		contactName.setHorizontalAlignment(SwingConstants.CENTER);
+		  
+		// newcontactpan.getContactLabels().clear();
+		 
 		
-		
-		
-		for (int i = 0; i < person.size(); i++) {
 			
-		 // newcontactpan.getContactLabels().get(i).removeAll();
-		 /* if(newcontactpan.getContactLabels().get(i))
-          contactName.setText(newcontactpan.getContactLabels().get(i).getName());*/
-		}
+          contactName.setText(newcontactpan.getContactLabels().get(id).getName());
+  
 		
 		
 		

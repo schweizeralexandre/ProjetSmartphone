@@ -23,8 +23,9 @@ public class ContactPanel extends BasicPanel {
 
 	private TopContactPanel topContactMainScreen = new TopContactPanel();
 	protected JPanel savedContacts = new BasicPanel();
-	private JList list;
+	//private JList list;
 	private NewContactPanel butpan;
+
 	
 	
 	public ContactPanel() {	
@@ -41,7 +42,7 @@ public class ContactPanel extends BasicPanel {
 	
 	
 	this.add(scrollPanel,BorderLayout.CENTER);
-    this.add(topContactMainScreen, BorderLayout.NORTH);
+    this.add(topContactMainScreen, BorderLayout.NORTH); 
     
     
     
