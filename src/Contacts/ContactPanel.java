@@ -37,11 +37,11 @@ public class ContactPanel extends BasicPanel {
 //    private ContactView contactview = new ContactView(this,cards,person);
 //    private ContactModify contactmodify = new ContactModify(this,cards,person);
 //    
-	protected ArrayList<PersonDetails> person;
+	private ArrayList<PersonDetails> person;
     public CardLayout cards = new CardLayout();
     public ContactList contactlist;
-    public ContactView contactview = new ContactView(this,cards,person);
-    public ContactModify contactmodify = new ContactModify(this,cards,person);
+    public ContactView contactview; 
+    public ContactModify contactmodify;
   
 	
 	public ContactPanel() {	
@@ -49,25 +49,27 @@ public class ContactPanel extends BasicPanel {
 		person=deserializeObject();
 		System.out.println("ok");
 	} catch (Exception e) {
-		
+		person= new ArrayList<>();
 	}
-	
+	contactview = new ContactView(this,cards,person);
 	contactlist = new ContactList(this,cards,person);
+	contactmodify= new ContactModify(this,cards,person);
     this.setLayout(cards);
     this.add(contactlist,"contactlist");
     this.add(contactmodify,"contactmodify");
     this.add(contactview,"contactview");
     //this.add(topContactMainScreen, BorderLayout.NORTH); 
 
-    
-    
+
+  
    
 	}
 	
 	public void affichecontact(Container nea)
 	{
+;
 		nea.removeAll();
-		for (int i = 0; i < person.size(); i++) {
+		for (int i = 0; i <this.person.size(); i++) {
 			
 		
 			nea.add(new ButtonContact(person.get(i).getName()));
@@ -92,5 +94,13 @@ public class ContactPanel extends BasicPanel {
 		return personne;
 	}
 
+	public ArrayList<PersonDetails> getPerson() {
+		return person;
+	}
 
+
+	
+	
+	
+	
 }

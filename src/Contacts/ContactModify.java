@@ -231,8 +231,8 @@ public class ContactModify extends BasicPanel{
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==Okbut) {
-
-		    	person.add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
+			//	System.out.println(person.size());
+		    	contactPanel.getPerson().add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
 			
 			
 						

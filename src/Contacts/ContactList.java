@@ -29,7 +29,7 @@ public class ContactList extends BasicPanel{
    private JPanel savedContacts = new BasicPanel();
    private JButton addcontact = new ButtonClass("Images/addcontact.png");
    private JLabel contactlabel = new JLabel("Contacts");
-  JScrollPane scrollPanel = new JScrollPane(savedContacts);
+   private JScrollPane scrollPanel = new JScrollPane(savedContacts);
 	
 	public ContactList(ContactPanel contactPanel, CardLayout cards, ArrayList<PersonDetails> person) {
 		
