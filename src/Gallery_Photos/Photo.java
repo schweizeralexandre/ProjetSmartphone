@@ -1,7 +1,7 @@
 /*
  * Photos.java
  * Auteur: Alexandre Schweizer
- * Date de création: 6 juin 2018
+ * Date de crï¿½ation: 6 juin 2018
  */
 
 package Gallery_Photos;
@@ -29,7 +29,7 @@ import javax.swing.JPanel;
 class Photo extends JButton {
 
 	private boolean isIcon = true;
-	private String path = "Images/";
+String path = "Images/";
 	String pictureName ;
 	String[] cardList; 
 	CardLayout display; 
@@ -99,7 +99,7 @@ class Photo extends JButton {
 			
 			Image img ;
 			try {
-				img = ImageIO.read(new File(pictureName));
+				img = ImageIO.read(new File(path+pictureName));
 				img = getImageIcon(img, 270, 380);
 				icon.setIcon(new ImageIcon(img));
 			} catch (IOException e) {

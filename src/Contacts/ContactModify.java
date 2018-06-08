@@ -282,9 +282,14 @@ public class ContactModify extends BasicPanel{
 					
 				   System.out.println( person.get(i).getName());
 				  
-			}*/    contactPanel.affichecontact(contactPanel.getContactlist().getScrollPanel());
+			}*/    contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
 			       cards.show(contactPanel,"contactlist");
-			
+			       try {
+					serializeObject(person);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				
 				for (int i = 0; i < champs.length; i++) {
@@ -313,18 +318,7 @@ public class ContactModify extends BasicPanel{
 
 	
 		
-		@SuppressWarnings("unchecked")
-		public ArrayList<PersonDetails> deserializeObject(String fichier) throws IOException, ClassNotFoundException 
-		{
-			ArrayList <PersonDetails> personne;
-			FileInputStream ffichier = new FileInputStream(fichier);
-			BufferedInputStream bfichier = new BufferedInputStream(ffichier);
-			ObjectInputStream obfichier = new ObjectInputStream(bfichier);
-			personne=(ArrayList<PersonDetails>) obfichier.readObject();
-			obfichier.close();
-			return personne;
-		}
-	
+		
 	
 	
 }

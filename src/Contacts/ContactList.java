@@ -3,10 +3,13 @@ package Contacts;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.CardLayout;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -26,7 +29,7 @@ public class ContactList extends BasicPanel{
    private JPanel savedContacts = new BasicPanel();
    private JButton addcontact = new ButtonClass("Images/addcontact.png");
    private JLabel contactlabel = new JLabel("Contacts");
-   private JScrollPane scrollPanel = new JScrollPane(savedContacts);
+  JScrollPane scrollPanel = new JScrollPane(savedContacts);
 	
 	public ContactList(ContactPanel contactPanel, CardLayout cards, ArrayList<PersonDetails> person) {
 		
@@ -59,13 +62,22 @@ public class ContactList extends BasicPanel{
 		
 		this.add(scrollPanel,BorderLayout.CENTER);
 		
-
-		contactPanel.affichecontact(scrollPanel);
+		contactPanel.affichecontact(savedContacts);
 		
 		
 	}
 	
 	
+	public JPanel getSavedContacts() {
+		return savedContacts;
+	}
+
+
+	public void setSavedContacts(JPanel savedContacts) {
+		this.savedContacts = savedContacts;
+	}
+
+
 	public class ActionClass implements ActionListener{
 
 		@Override

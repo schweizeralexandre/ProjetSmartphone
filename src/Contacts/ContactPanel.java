@@ -10,9 +10,14 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
@@ -26,22 +31,34 @@ public class ContactPanel extends BasicPanel {
 	//private TopContactPanel topContactMainScreen = new TopContactPanel();
 	//protected JPanel savedContacts = new BasicPanel();
 	//private JList list;
-	private ArrayList<PersonDetails> person = new ArrayList<>();
-    private CardLayout cards = new CardLayout();
-    private ContactList contactlist = new ContactList(this,cards,person);
-    private ContactView contactview = new ContactView(this,cards,person);
-    private ContactModify contactmodify = new ContactModify(this,cards,person);
-    
-	
+//	private ArrayList<PersonDetails> person = new ArrayList<>();
+//    private CardLayout cards = new CardLayout();
+//    private ContactList contactlist = new ContactList(this,cards,person);
+//    private ContactView contactview = new ContactView(this,cards,person);
+//    private ContactModify contactmodify = new ContactModify(this,cards,person);
+//    
+	protected ArrayList<PersonDetails> person;
+    public CardLayout cards = new CardLayout();
+    public ContactList contactlist;
+    public ContactView contactview = new ContactView(this,cards,person);
+    public ContactModify contactmodify = new ContactModify(this,cards,person);
+  
 	
 	public ContactPanel() {	
+	try {
+		person=deserializeObject();
+		System.out.println("ok");
+	} catch (Exception e) {
+		
+	}
 	
+	contactlist = new ContactList(this,cards,person);
     this.setLayout(cards);
     this.add(contactlist,"contactlist");
     this.add(contactmodify,"contactmodify");
     this.add(contactview,"contactview");
     //this.add(topContactMainScreen, BorderLayout.NORTH); 
-    
+
     
     
    
@@ -52,15 +69,28 @@ public class ContactPanel extends BasicPanel {
 		nea.removeAll();
 		for (int i = 0; i < person.size(); i++) {
 			
-			nea.add(new Button(person.get(i).getName()));
+		
+			nea.add(new ButtonContact(person.get(i).getName()));
 			
 		}
+		System.out.println(person.size());
 	}
 
 	public ContactList getContactlist() {
 		return contactlist;
 	}
 	
-   
+	@SuppressWarnings("unchecked")
+	public ArrayList<PersonDetails> deserializeObject() throws IOException, ClassNotFoundException 
+	{
+		ArrayList <PersonDetails> personne;
+		FileInputStream ffichier = new FileInputStream("Contacts/contacts.ser");
+		BufferedInputStream bfichier = new BufferedInputStream(ffichier);
+		ObjectInputStream obfichier = new ObjectInputStream(bfichier);
+		personne=(ArrayList<PersonDetails>) obfichier.readObject();
+		obfichier.close();
+		return personne;
+	}
+
 
 }

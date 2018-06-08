@@ -214,7 +214,7 @@ public class GalleryPanel extends JPanel {
 
 				Path copy =Paths.get(fileChooser.getSelectedFile().getPath());
 				Path paste = Paths.get("Images", fileChooser.getSelectedFile().getName());
-				ImageGallery.add(fileChooser.getSelectedFile().getPath()) ;
+				ImageGallery.add("Image/"+fileChooser.getSelectedFile().getName()) ;
 				try {
 					Files.copy(copy,paste) ;
 				} catch (IOException e1) {
