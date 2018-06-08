@@ -62,20 +62,13 @@ public class GalleryPanel extends JPanel {
 
 	public GalleryPanel() {
 
-
-		try {
-			ImageGallery =  deserialize() ;
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			ImageGallery = new ArrayList<String>() ;
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			ImageGallery = new ArrayList<String>() ;
-			e.printStackTrace();
-
-		}
-
+try {
+	ImageGallery =  deserialize() ;
+} catch (Exception e) {
+	// TODO: handle exception
+	ImageGallery = new ArrayList<String>() ;
+}
+		
 		galeryPanel.setLayout(new BorderLayout());
 		menuPanel.setLayout(new GridLayout(1, 3)) ;
 
@@ -214,7 +207,7 @@ public class GalleryPanel extends JPanel {
 
 				Path copy =Paths.get(fileChooser.getSelectedFile().getPath());
 				Path paste = Paths.get("Images", fileChooser.getSelectedFile().getName());
-				ImageGallery.add("Image/"+fileChooser.getSelectedFile().getName()) ;
+				ImageGallery.add("Images/"+fileChooser.getSelectedFile().getName()) ;
 				try {
 					Files.copy(copy,paste) ;
 				} catch (IOException e1) {

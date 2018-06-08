@@ -99,7 +99,7 @@ String path = "Images/";
 			
 			Image img ;
 			try {
-				img = ImageIO.read(new File(path+pictureName));
+				img = ImageIO.read(new File(pictureName));
 				img = getImageIcon(img, 270, 380);
 				icon.setIcon(new ImageIcon(img));
 			} catch (IOException e) {
