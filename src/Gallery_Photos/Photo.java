@@ -190,11 +190,16 @@ class Photo extends JButton {
 			}) ;
 			
 		
-//			deleteButton.addActionListener(new ActionListener() {
-//				
-//				}
-//			
-//		}) ;
+			deleteButton.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					
+					
+				
+				}
+			
+		}) ;
 
 
 

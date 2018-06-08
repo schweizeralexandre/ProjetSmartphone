@@ -63,8 +63,6 @@ public class GalleryPanel extends JPanel {
 
 
 
-
-
 	public GalleryPanel() {
 		
 	
@@ -125,6 +123,13 @@ public class GalleryPanel extends JPanel {
 
 
 
+	}
+	
+	public ArrayList<String> getImageGallery() {
+		return ImageGallery;
+	}
+	public void setImageGallery(ArrayList<String> imageGallery) {
+		ImageGallery = imageGallery;
 	}
 	public  void changePanel(String string) {
 		// TODO Auto-generated method stub
