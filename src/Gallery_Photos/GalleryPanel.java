@@ -38,21 +38,26 @@ import main.MainFrame;
 
 
 public class GalleryPanel extends JPanel {
+	
+
+	private static CardLayout pictures = new CardLayout();
 
 	private JPanel menuPanel = new JPanel() ;
 	private JPanel galeryPanel = new JPanel() ;
 	private JPanel photoPanel = new JPanel() ;
-	
+
 
 
 	private JButton returnButton = new GaleryButton("Images/back_button.png") ;
 	private JLabel titleLabel = new JLabel("Ma Galerie") ;
 	private JButton addButton = new GaleryButton("Images/add_button.png") ;
-	private JButton deleteButton = new GaleryButton("Images/delete_button.png") ;
+
 
 	private CardLayout display = new CardLayout() ;
-
 	private String[] CardList = {"GalleryPanel","FullScreenPanel"} ;
+	
+	private JScrollPane ScrollBar = new JScrollPane(photoPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER) ;
+
 
 	ArrayList <String> ImageGallery ;
 
@@ -61,14 +66,18 @@ public class GalleryPanel extends JPanel {
 
 
 	public GalleryPanel() {
-
-try {
-	ImageGallery =  deserialize() ;
-} catch (Exception e) {
-	// TODO: handle exception
-	ImageGallery = new ArrayList<String>() ;
-}
 		
+	
+
+		try {
+			ImageGallery =  deserialize() ;
+		} catch (Exception e) {
+			// TODO: handle exception
+			ImageGallery = new ArrayList<String>() ;
+		}
+		
+		
+
 		galeryPanel.setLayout(new BorderLayout());
 		menuPanel.setLayout(new GridLayout(1, 3)) ;
 
@@ -77,7 +86,7 @@ try {
 		galeryPanel.setBackground(Color.lightGray) ;
 
 
-		galeryPanel.add(photoPanel, BorderLayout.CENTER) ;
+		galeryPanel.add(ScrollBar, BorderLayout.CENTER) ;
 		photoPanel.setBackground(Color.lightGray);
 		galeryPanel.add(menuPanel,BorderLayout.NORTH);
 
@@ -99,9 +108,11 @@ try {
 
 
 
-		photoPanel.setLayout(new FlowLayout()) ;
+		photoPanel.setLayout(new GridLayout(3, 2)) ;
 		setLayout(display) ;
 		add(galeryPanel,CardList[0]) ;
+		
+		
 
 		//photoPanel.setLayout(new GridLayout(4,4)) ;
 
@@ -115,6 +126,12 @@ try {
 
 
 	}
+	public  void changePanel(String string) {
+		// TODO Auto-generated method stub
+		display.show(this, string);
+	}
+
+
 
 	void displayImage() {
 		photoPanel.removeAll();
@@ -137,9 +154,9 @@ try {
 	public ArrayList <String> deserialize() throws IOException, ClassNotFoundException
 	{
 		ArrayList <String> ImageGallery = new ArrayList() ;
-		FileInputStream ffichier = new FileInputStream("sauvegardeImages/sauvegardeImages.ser") ;
-		BufferedInputStream bfichier = new BufferedInputStream(ffichier) ;
-		ObjectInputStream obfichier = new ObjectInputStream(bfichier) ;
+		FileInputStream ffichier = new FileInputStream ("sauvegardeImages/sauvegardeImages.ser") ;
+		BufferedInputStream bfichier = new BufferedInputStream (ffichier) ;
+		ObjectInputStream obfichier = new ObjectInputStream (bfichier) ;
 		//obfichier.readObject();
 		ImageGallery = (ArrayList) obfichier.readObject() ;
 		obfichier.close() ;
@@ -205,8 +222,8 @@ try {
 				System.out.println("You chose to open this file: " +
 						fileChooser.getSelectedFile().getName()) ;
 
-				Path copy =Paths.get(fileChooser.getSelectedFile().getPath());
-				Path paste = Paths.get("Images", fileChooser.getSelectedFile().getName());
+				Path copy = Paths.get(fileChooser.getSelectedFile().getPath()) ;
+				Path paste = Paths.get("Images", fileChooser.getSelectedFile().getName()) ;
 				ImageGallery.add("Images/"+fileChooser.getSelectedFile().getName()) ;
 				try {
 					Files.copy(copy,paste) ;
@@ -233,6 +250,13 @@ try {
 
 
 	}
+
+	
+		
+
+
+
+	
 }
 
 
