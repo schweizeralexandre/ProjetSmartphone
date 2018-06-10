@@ -9,6 +9,8 @@ public class PersonDetails implements Serializable {
 	private String email;
 	private String num1;
 	private String num2;
+	private String image;
+	
 	
 	
 	public PersonDetails(String surname, String name, String email, String num1, String num2) {
@@ -18,6 +20,7 @@ public class PersonDetails implements Serializable {
 		this.email = email;
 		this.num1 = num1;
 		this.num2 = num2;
+		//this.image = image;
 		
 	}
 
@@ -71,6 +74,18 @@ public class PersonDetails implements Serializable {
 		this.num2 = num2;
 		
 	}
+
+
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
+	
 
 
 

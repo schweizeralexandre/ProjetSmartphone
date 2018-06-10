@@ -26,7 +26,7 @@ public class ContactList extends BasicPanel{
    private CardLayout cards;
    private ArrayList<PersonDetails> person;
    private JPanel addcontactPanel = new BasicPanel();
-   private JPanel savedContacts = new BasicPanel();
+   protected JPanel savedContacts = new BasicPanel();
    private JButton addcontact = new ButtonClass("Images/addcontact.png");
    private JLabel contactlabel = new JLabel("Contacts");
    private JScrollPane scrollPanel = new JScrollPane(savedContacts);
@@ -83,6 +83,7 @@ public class ContactList extends BasicPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
+			contactPanel.contactmodify.Deletebut.setEnabled(false);
 			cards.show(contactPanel, "contactmodify");
 		}
 		
@@ -97,6 +98,7 @@ public class ContactList extends BasicPanel{
 		return scrollPanel;
 	}
 
-	
+
+
 	
 }

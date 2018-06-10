@@ -4,9 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,10 +26,16 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.plaf.BorderUIResource;
+
+import Gallery_Photos.GalleryPanel;
 import main.BasicPanel;
+import main.ButtonClass;
+import main.MainFrame;
 
 
 public class ContactModify extends BasicPanel{
@@ -38,21 +46,21 @@ public class ContactModify extends BasicPanel{
 	private JPanel TopNewcontactPanel = new BasicPanel();
 	private JPanel contactDetailsPanel = new BasicPanel();
 	private JPanel photoPanel = new BasicPanel();
+	protected JPanel contactDeletePanel = new BasicPanel();
+	protected JButton Deletebut = new ButtonClass("Images/delete.png");
 	private JButton Cancelbut = new JButton("Annuler");
-	protected JButton Okbut = new JButton("OK");
-	private JLabel newContactLabel = new JLabel("Nouveau contact");
+	private JButton Okbut = new JButton("OK");
+	protected JLabel newContactLabel = new JLabel("Nouveau contact");
 	private JButton addimage = new JButton("Ajouter une photo");
 	private JLabel nom = new JLabel("Nom");
 	private JLabel prenom = new JLabel("Prenom");
 	private JLabel mail = new JLabel ("Mail");
-	private JTextField [] champs = new JTextField[5];
-	private JComboBox [] tel = new JComboBox[2];
-	private String[]telTypes = {"Domicile","Prive","Travail"};
+	private JLabel portable = new JLabel("Portable");
+	private JLabel domicile = new JLabel("Domicile");
+	protected JTextField [] champs = new JTextField[5];
 	
 
 	public ContactModify(ContactPanel contactPanel, CardLayout cards, ArrayList<PersonDetails> person) {
-		
-		
 		
 		
 		
@@ -85,14 +93,7 @@ public class ContactModify extends BasicPanel{
 			
 		}
 	
-	
-		for (int i = 0; i < tel.length; i++) {
-			
-			tel[i] = new JComboBox(telTypes);
-			tel[i].setBackground(Color.WHITE);;
-		
-		}
-		
+
 		
 		contactDetailsPanel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -125,7 +126,7 @@ public class ContactModify extends BasicPanel{
 		
 		c.gridx = 0;
 		c.gridy = 4;
-		contactDetailsPanel.add(tel[0],c);
+		contactDetailsPanel.add(portable,c);
 		
 		c.gridx = 1;
 		c.gridy = 4;
@@ -133,28 +134,52 @@ public class ContactModify extends BasicPanel{
 		
 		c.gridx = 0;
 		c.gridy = 5;
-		contactDetailsPanel.add(tel[1],c);
+		contactDetailsPanel.add(domicile,c);
 		
 		c.gridx = 1;
 		c.gridy = 5;
 		contactDetailsPanel.add(champs[4], c);
 		
+		//photoPanel.setLayout(new GridLayout(1, 3));
 		
+		photoPanel.setLayout(new FlowLayout());
+		
+		addimage = perzonaliszeAddImageButton(addimage);
+		addimage.addActionListener(new ImageListner());
+		
+		photoPanel.add(addimage);
+		Deletebut.setPreferredSize(new Dimension(20, 20));
+		Deletebut.setEnabled(false);
+		contactDeletePanel.add(Deletebut);
 		
 		TopNewcontactPanel.add(Cancelbut, BorderLayout.WEST);
 		TopNewcontactPanel.add(newContactLabel, BorderLayout.CENTER);
 		TopNewcontactPanel.add(Okbut, BorderLayout.EAST);
+		TopNewcontactPanel.add(photoPanel,BorderLayout.SOUTH);
 		
 		//contactDetailsPanel.add(addimage,BorderLayout.NORTH);
 		this.add(TopNewcontactPanel, BorderLayout.NORTH);
 		this.add(contactDetailsPanel,BorderLayout.CENTER);
+		this.add(contactDeletePanel, BorderLayout.SOUTH);
 		
-		
-
-		
+	   // testSaisie();
 		
 	}
-    public JButton perzonaliszeButton(JButton but) {
+	
+	
+    public JTextField[] getChamps() {
+		return champs;
+	}
+
+
+
+	public void setChamps(JTextField[] champs) {
+		this.champs = champs;
+	}
+
+
+
+	public JButton perzonaliszeButton(JButton but) {
 		
 		but.setBackground(Color.WHITE);
 		but.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -167,6 +192,21 @@ public class ContactModify extends BasicPanel{
 		
 		return but;
 	}
+    
+    public JButton perzonaliszeAddImageButton(JButton but) {
+    	
+    	but.setPreferredSize(new Dimension(150, 70));
+		perzonaliszeButton(addimage);
+		but.setForeground(Color.BLACK);
+		but.setHorizontalAlignment(SwingConstants.CENTER);
+
+    	
+    	
+    	
+    	return but;
+   }
+    
+
 	
     public class ActionClass implements ActionListener{
 
@@ -183,9 +223,28 @@ public class ContactModify extends BasicPanel{
 			}
 		}
 		
+	}
+	public class ImageListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource()==addimage) {
+				
+				MainFrame.changePanel("GalleryPanel");
+				
+				
+				// a faire
+			}
+			
+			
+			
+			
+			
+		}
+		
 		
 	}
-	
 	public class KeyTypedClass implements KeyListener{
 
 		@Override
@@ -196,30 +255,22 @@ public class ContactModify extends BasicPanel{
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-		
-		// si on enlève les valeurs saisies dans les champs, le bouton ok se désactive
-			for (int i = 0; i < champs.length; i++) {
-				
-				if(e.getSource()==champs[i]) {
-				
-					if(champs[i].getText().isEmpty())
-					Okbut.setEnabled(false);
-				}							
-			}
+	
 		}
-
 		@Override
 		public void keyTyped(KeyEvent e) {
 		
-			// si on saisit qqch dans les champs le button ok s'active
+			/* le bouton ok qui permet d'ajouter un contact s'active lorsqu'au moins le nom, 
+			 * le prénom et un numéro de téléphone sont saisis.
+		       Sinon le bouton ok reste désactivé */
 	
-				for (int i = 0; i < champs.length; i++) {
-					
-					if(e.getSource()==champs[i]) {
-						Okbut.setEnabled(true);
-											
+				
+				if(champs[0].getText().isEmpty()||champs[1].getText().isEmpty()||
+						champs[3].getText().isEmpty()&&champs[4].getText().isEmpty()) {
+					Okbut.setEnabled(false);
+				}else {
+					Okbut.setEnabled(true);
 				}
-			}	
 			
 		}
 	
@@ -233,8 +284,6 @@ public class ContactModify extends BasicPanel{
 			if(e.getSource()==Okbut) {
 			//	System.out.println(person.size());
 		    	contactPanel.getPerson().add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
-			
-			
 						
 			    try {
 			    	
@@ -245,44 +294,7 @@ public class ContactModify extends BasicPanel{
 					
 					e1.printStackTrace();
 				}
-				
-			   // création des contactsLabels
-			    
-			 // contactLabels.add(new Button(champs[0].getText()+champs[1].getText()));
-			  
-			   
-			    
-			  /*  pan.savedContacts.removeAll();
-			    contactLabels.clear();*/
-			    /*
-			    for(int i = 0; i < person.size(); i++) {
-				Button temp =new Button(person.get(i).getName()+" "+person.get(i).getSurname(),i);
-				
-				
-				temp.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						for (int i = 0; i < person.size(); i++) {
-
-						//	contactview = new ContactViewPanel(person);
-						}
-						    
-						MainFrame.changePanel("contactView");
-						
-					}
-				});
-				   contactLabels.add(temp);
-				   contactLabels.get(i).setMaximumSize(new Dimension(300, 50));
-				   pan.savedContacts.add(contactLabels.get(i));
-					
-			}*/
-			 /*for(int i = 0; i < person.size(); i++) {
-					
-				   System.out.println( person.get(i).getName());
-				  
-			}*/    contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
+			       contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
 			       cards.show(contactPanel,"contactlist");
 			       try {
 					serializeObject(person);
@@ -297,6 +309,7 @@ public class ContactModify extends BasicPanel{
 					champs[i].setText(null);
 				}
 				
+				Okbut.setEnabled(false);
 				
 				
 				

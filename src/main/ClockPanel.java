@@ -5,14 +5,15 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
+import java.time.Clock;
 import java.util.Date;
-
 import javax.swing.*;
 
 public class ClockPanel extends JPanel{
 	
 	 private JLabel clock = new JLabel();
-	
+	 
+	 
 	public ClockPanel() {
 		
 		setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -35,8 +36,10 @@ public class ClockPanel extends JPanel{
 		
 	}
 	
-	  public void tickTock() {
+	
+	public void tickTock() {
 		    clock.setText(DateFormat.getDateTimeInstance().format(new Date()));
+		
 		    
 		  }
 

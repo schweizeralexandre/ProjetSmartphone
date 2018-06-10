@@ -7,12 +7,9 @@ import java.awt.Color;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.geom.RoundRectangle2D;
-
 import javax.swing.*;
 import Calculator.CalculatorPanel;
 import Contacts.ContactPanel;
-import Contacts.ContactViewPanel;
-import Contacts.NewContactPanel;
 import Gallery_Photos.GalleryPanel;
 import Meteo.WeatherPanel;
 

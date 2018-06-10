@@ -23,6 +23,10 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import Gallery_Photos.GalleryPanel;
+
+//import com.sun.xml.internal.ws.api.config.management.policy.ManagedServiceAssertion.ImplementationRecord;
+
 import main.BasicPanel;
 
 
@@ -31,17 +35,22 @@ public class ContactPanel extends BasicPanel {
 	//private TopContactPanel topContactMainScreen = new TopContactPanel();
 	//protected JPanel savedContacts = new BasicPanel();
 	//private JList list;
-//	private ArrayList<PersonDetails> person = new ArrayList<>();
-//    private CardLayout cards = new CardLayout();
-//    private ContactList contactlist = new ContactList(this,cards,person);
-//    private ContactView contactview = new ContactView(this,cards,person);
-//    private ContactModify contactmodify = new ContactModify(this,cards,person);
-//    
+    //private ArrayList<PersonDetails> person = new ArrayList<>();
+    //private CardLayout cards = new CardLayout();
+    //private ContactList contactlist = new ContactList(this,cards,person);
+    //private ContactView contactview = new ContactView(this,cards,person);
+    //private ContactModify contactmodify = new ContactModify(this,cards,person);
+
 	private ArrayList<PersonDetails> person;
-    public CardLayout cards = new CardLayout();
-    public ContactList contactlist;
-    public ContactView contactview; 
-    public ContactModify contactmodify;
+    private CardLayout cards = new CardLayout();
+    protected ContactList contactlist;
+    private ContactView contactview; 
+    protected ContactModify contactmodify;
+    private ContactPanel contactpanel;
+    private int j;
+    protected ButtonContact button;
+    //protected GalleryPanel myphotos = new GalleryPanel();
+
   
 	
 	public ContactPanel() {	
@@ -51,31 +60,43 @@ public class ContactPanel extends BasicPanel {
 	} catch (Exception e) {
 		person= new ArrayList<>();
 	}
-	contactview = new ContactView(this,cards,person);
+	//contactview = new ContactView(this,cards,person);
 	contactlist = new ContactList(this,cards,person);
 	contactmodify= new ContactModify(this,cards,person);
     this.setLayout(cards);
     this.add(contactlist,"contactlist");
     this.add(contactmodify,"contactmodify");
-    this.add(contactview,"contactview");
-    //this.add(topContactMainScreen, BorderLayout.NORTH); 
+   //this.add(contactview,"contactview");
+   //this.add(topContactMainScreen, BorderLayout.NORTH); 
 
+    
+    //contactmodify.Deletebut.addActionListener(new deletecontact());
 
-  
+      contactpanel = this;
+      //button = this.button;
    
 	}
 	
 	public void affichecontact(Container nea)
 	{
-;
+
 		nea.removeAll();
 		for (int i = 0; i <this.person.size(); i++) {
 			
-		
-			nea.add(new ButtonContact(person.get(i).getName()));
-			
+		 ButtonContact button = new ButtonContact(person.get(i).getName()+" "+person.get(i).getSurname(), i);
+			nea.add(button);
+			this.button = button;
+			button.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					add(new ContactView(contactpanel, cards, person,button.getId(),contactmodify),"contactview" );
+					cards.show(contactpanel, "contactview");
+					
+				}
+			});
 		}
-		System.out.println(person.size());
+		
 	}
 
 	public ContactList getContactlist() {
@@ -96,11 +117,38 @@ public class ContactPanel extends BasicPanel {
 
 	public ArrayList<PersonDetails> getPerson() {
 		return person;
+
+	
+	
 	}
 
+	
+	/*class deletecontact implements ActionListener{
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource()==contactmodify.Deletebut)
+				contactlist.savedContacts.remove(button);
+			    
+			     cards.show(contactlist,"contactlist");
+				System.out.println("yyyyyyyy");
+			
+			
+			
+			
+		}*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	//}
 	
-	
-	
-	
+
 }
