@@ -38,7 +38,7 @@ import main.MainFrame;
 
 
 public class GalleryPanel extends JPanel {
-	
+
 
 	private static CardLayout pictures = new CardLayout();
 
@@ -55,7 +55,7 @@ public class GalleryPanel extends JPanel {
 
 	private CardLayout display = new CardLayout() ;
 	private String[] CardList = {"GalleryPanel","FullScreenPanel"} ;
-	
+
 	private JScrollPane ScrollBar = new JScrollPane(photoPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER) ;
 
 
@@ -64,8 +64,8 @@ public class GalleryPanel extends JPanel {
 
 
 	public GalleryPanel() {
-		
-	
+
+
 
 		try {
 			ImageGallery =  deserialize() ;
@@ -73,8 +73,8 @@ public class GalleryPanel extends JPanel {
 			// TODO: handle exception
 			ImageGallery = new ArrayList<String>() ;
 		}
-		
-		
+
+
 
 		galeryPanel.setLayout(new BorderLayout());
 		menuPanel.setLayout(new GridLayout(1, 3)) ;
@@ -109,8 +109,8 @@ public class GalleryPanel extends JPanel {
 		photoPanel.setLayout(new GridLayout(3, 2)) ;
 		setLayout(display) ;
 		add(galeryPanel,CardList[0]) ;
-		
-		
+
+
 
 		//photoPanel.setLayout(new GridLayout(4,4)) ;
 
@@ -124,7 +124,7 @@ public class GalleryPanel extends JPanel {
 
 
 	}
-	
+
 	public ArrayList<String> getImageGallery() {
 		return ImageGallery;
 	}
@@ -247,26 +247,10 @@ public class GalleryPanel extends JPanel {
 					e1.printStackTrace();
 				}
 
-
 			}
-
 
 		}
 
+	}	
 
-	}
-
-	
-		
-
-
-
-	
 }
-
-
-
-
-
-
-

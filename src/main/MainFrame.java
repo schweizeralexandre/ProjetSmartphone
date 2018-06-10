@@ -14,6 +14,7 @@ import Contacts.ContactPanel;
 import Contacts.ContactViewPanel;
 import Contacts.NewContactPanel;
 import Gallery_Photos.GalleryPanel;
+import Meteo.WeatherPanel;
 
 
 
@@ -30,8 +31,8 @@ public class MainFrame extends JFrame {
 	private MainPanel mainScreen = new MainPanel();
 	private GalleryPanel gallery = new GalleryPanel();
 	private ContactPanel contacts = new ContactPanel();
-
 	private CalculatorPanel calculator = new CalculatorPanel();
+	private WeatherPanel weather = new WeatherPanel() ;
 	private ImageIcon image = new ImageIcon("Images/screen.jpg");
 	private JLabel label = new JLabel();
 	private MenuButtonPanel homebutton = new MenuButtonPanel();
@@ -79,6 +80,7 @@ public class MainFrame extends JFrame {
 	cards.add(contactview,"contactView");*/
 	cards.add(gallery, "GalleryPanel");
 	cards.add(calculator, "CalculatorPanel");
+	cards.add(weather, "WeatherPanel");
 	cards.setBackground(new Color(0,0,0,0));
 	
 	

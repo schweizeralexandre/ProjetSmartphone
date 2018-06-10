@@ -24,7 +24,7 @@ public class MainPanel extends JPanel {
 	private JButton contactButton = new ButtonClass("Images/ContactIcon.png");
 	private JButton galleryButton = new ButtonClass("Images/PhotosICon.png");
 	private JButton calculatorButton = new ButtonClass("Images/CalculatorIcon.png");
-	private JButton appButton = new ButtonClass("Images/weather.png");
+	private JButton weatherButton = new ButtonClass("Images/weather.png");
 
 	
 	
@@ -38,7 +38,7 @@ public class MainPanel extends JPanel {
 		label.add(contactButton);
 		label.add(galleryButton);
 		label.add(calculatorButton);
-		label.add(appButton);
+		label.add(weatherButton);
 		
 		add(label,BorderLayout.SOUTH);
 		
@@ -49,6 +49,7 @@ public class MainPanel extends JPanel {
 		contactButton.addActionListener(new ActionClass());
 		galleryButton.addActionListener(new ActionClass());
 		calculatorButton.addActionListener(new ActionClass());
+		weatherButton.addActionListener(new ActionClass());
 		
 		
 
@@ -77,9 +78,11 @@ public class MainPanel extends JPanel {
 				if(e.getSource()==galleryButton) {
 					MainFrame.changePanel("GalleryPanel");
 				}
-				else
 					if(e.getSource()==calculatorButton) {
 						MainFrame.changePanel("CalculatorPanel");
+					}
+					else if (e.getSource()==weatherButton) {
+						MainFrame.changePanel("WeatherPanel");
 					}
 				
 			

@@ -11,8 +11,6 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -22,19 +20,13 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import javax.imageio.ImageReadParam;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Gallery_Photos.GalleryPanel.GaleryButton;
-import Gallery_Photos.GalleryPanel.Retour;
-import main.MainFrame;
 
 class Photo extends JButton {
 
@@ -47,6 +39,7 @@ class Photo extends JButton {
 
 	JLabel icon = new JLabel();
 	JPanel optionsPanel = new JPanel();
+
 
 
 	public Photo(String pictureName, String[] cardList, CardLayout display, GalleryPanel galleryPanel, int id) {
@@ -131,7 +124,8 @@ class Photo extends JButton {
 		private JPanel deletePanel = new JPanel() ;
 
 		private JButton returnButton ;
-		private JButton deleteButton;
+		private JButton deleteButton ;
+
 		private JLabel nomPhoto  ;
 
 
@@ -141,35 +135,35 @@ class Photo extends JButton {
 			returnButton = new OptionsButton("Images/back_button.png",gp) ;
 			nomPhoto = new JLabel(pictureName.replaceAll("Images/", "")) ;
 			deleteButton = new OptionsButton("Images/delete_button.png",gp) ;
-//
-//			//			setCursor(new Cursor(Cursor.HAND_CURSOR));
-//			//			setCursor(new Cursor(Cursor.HAND_CURSOR));
-//			//			setOpaque(false);
-//			//			setContentAreaFilled(false);
-//			//			setBorderPainted(false);
-//
-//			Image img;
-//
-//			//			try {
-//			//				img = ImageIO.read(new File("Images/back_button.png"));
-//			//				returnButton.setIcon(new ImageIcon(img));
-//			//			} catch (IOException e) {
-//			//				// TODO Auto-generated catch block
-//			//				e.printStackTrace();
-//			//			}
-//			//			
-//			//			try {
-//			//				img = ImageIO.read(new File("Images/delete_button.png"));
-//			//				deleteButton.setIcon(new ImageIcon(img));
-//			//			} catch (IOException e) {
-//			//				// TODO Auto-generated catch block
-//			//				e.printStackTrace();
-//			//			}
-//			//			
-//
-//
-//
-//
+			//
+			//			//			setCursor(new Cursor(Cursor.HAND_CURSOR));
+			//			//			setCursor(new Cursor(Cursor.HAND_CURSOR));
+			//			//			setOpaque(false);
+			//			//			setContentAreaFilled(false);
+			//			//			setBorderPainted(false);
+			//
+			//			Image img;
+			//
+			//			//			try {
+			//			//				img = ImageIO.read(new File("Images/back_button.png"));
+			//			//				returnButton.setIcon(new ImageIcon(img));
+			//			//			} catch (IOException e) {
+			//			//				// TODO Auto-generated catch block
+			//			//				e.printStackTrace();
+			//			//			}
+			//			//			
+			//			//			try {
+			//			//				img = ImageIO.read(new File("Images/delete_button.png"));
+			//			//				deleteButton.setIcon(new ImageIcon(img));
+			//			//			} catch (IOException e) {
+			//			//				// TODO Auto-generated catch block
+			//			//				e.printStackTrace();
+			//			//			}
+			//			//			
+			//
+			//
+			//
+			//
 			deletePanel.setLayout (new GridLayout(1, 3)) ;
 
 			deletePanel.setBackground(Color.white) ;
@@ -188,18 +182,21 @@ class Photo extends JButton {
 					gp.changePanel("GalleryPanel") ;
 				}
 			}) ;
-			
-		
+
+
 			deleteButton.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					
-					
-				
+
+					int action = JOptionPane.showConfirmDialog(FullScreenImage.this, "Voulez-vous vraiment supprimer la photo ?", "Suppression", JOptionPane.OK_CANCEL_OPTION) ;
+
+					if(action == JOptionPane.OK_OPTION) {
+						//ArrayList.get(i).remove ;
+					}
 				}
-			
-		}) ;
+
+			}) ;
 
 
 
@@ -235,30 +232,30 @@ class Photo extends JButton {
 			}
 
 
-//			//	public class Retour implements ActionListener {
-//			//
-//			//		@Override
-//			//		public void actionPerformed(ActionEvent e) {
-//			//			// TODO Auto-generated method stub
-//			//			gp.changePanel("GalleryPanel") ;
-//			//		}
-//			//
-//			//
-//			//	}
-//
-////			public class Delete implements ActionListener {
-////
-////				@Override
-////				public void actionPerformed(ActionEvent e) {
-////					// TODO Auto-generated method stub
-////					gp.changePanel("GalleryPanel") ;
-////				}
-////
-////
-////			}
-//
-//		}
-	//}
+			//			//	public class Retour implements ActionListener {
+			//			//
+			//			//		@Override
+			//			//		public void actionPerformed(ActionEvent e) {
+			//			//			// TODO Auto-generated method stub
+			//			//			gp.changePanel("GalleryPanel") ;
+			//			//		}
+			//			//
+			//			//
+			//			//	}
+			//
+			////			public class Delete implements ActionListener {
+			////
+			////				@Override
+			////				public void actionPerformed(ActionEvent e) {
+			////					// TODO Auto-generated method stub
+			////					gp.changePanel("GalleryPanel") ;
+			////				}
+			////
+			////
+			////			}
+			//
+			//		}
+			//}
 		}
 	}
 }
