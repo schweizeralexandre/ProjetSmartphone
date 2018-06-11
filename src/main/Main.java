@@ -1,7 +1,7 @@
 /*
  * Main.java
  * Auteur: Alexandre Schweizer
- * Date de crï¿½ation: 30 avr. 2018
+ * Date de création: 30 avr. 2018
  */
 
 package main;

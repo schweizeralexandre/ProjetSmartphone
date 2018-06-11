@@ -1,3 +1,10 @@
+/*
+ * Main.java
+ * Auteur: Alexandre Schweizer
+ * Date de création: 30 avr. 2018
+ */
+
+
 package Gallery_Photos;
 
 import java.awt.BorderLayout;
