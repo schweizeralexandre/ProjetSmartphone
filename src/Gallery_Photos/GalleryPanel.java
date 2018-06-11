@@ -4,16 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.font.ImageGraphicAttribute;
-import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -22,11 +17,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -40,13 +33,21 @@ import main.MainFrame;
 public class GalleryPanel extends JPanel {
 
 
-	private static CardLayout pictures = new CardLayout();
+	//private static CardLayout pictures = new CardLayout();
 
 	private JPanel menuPanel = new JPanel() ;
 	private JPanel galeryPanel = new JPanel() ;
 	private JPanel photoPanel = new JPanel() ;
 
 
+
+	public JPanel getPhotoPanel() {
+		return photoPanel;
+	}
+
+	public void setPhotoPanel(JPanel photoPanel) {
+		this.photoPanel = photoPanel;
+	}
 
 	private JButton returnButton = new GaleryButton("Images/back_button.png") ;
 	private JLabel titleLabel = new JLabel("Ma Galerie") ;
@@ -114,7 +115,7 @@ public class GalleryPanel extends JPanel {
 
 		//photoPanel.setLayout(new GridLayout(4,4)) ;
 
-		displayImage();
+		displayImage() ;
 
 
 
@@ -126,29 +127,28 @@ public class GalleryPanel extends JPanel {
 	}
 
 	public ArrayList<String> getImageGallery() {
-		return ImageGallery;
+		return ImageGallery ;
 	}
 	public void setImageGallery(ArrayList<String> imageGallery) {
-		ImageGallery = imageGallery;
+		ImageGallery = imageGallery ;
 	}
 	public  void changePanel(String string) {
 		// TODO Auto-generated method stub
-		display.show(this, string);
+		display.show(this, string) ;
 	}
 
 
 
 	void displayImage() {
-		photoPanel.removeAll();
+		photoPanel.removeAll() ;
 		for (int i = 0; i < ImageGallery.size(); i++) {
 
 			photoPanel.add(new Photo(ImageGallery.get(i),CardList,display,this, i)) ;
-			System.out.println(ImageGallery.get(i));
-			//			photoPanel.add(new JButton()) ;
+			System.out.println(ImageGallery.get(i)) ;
 		}
 	}
 
-	private static void serialize (ArrayList <String> ImageGallery) throws IOException {
+	void serialize (ArrayList <String> ImageGallery) throws IOException {
 		FileOutputStream fichier = new FileOutputStream("sauvegardeImages/sauvegardeImages.ser") ;
 		BufferedOutputStream bfichier = new BufferedOutputStream(fichier) ;
 		ObjectOutputStream obfichier = new ObjectOutputStream(bfichier) ;

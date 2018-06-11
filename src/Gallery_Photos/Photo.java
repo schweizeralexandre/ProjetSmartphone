@@ -1,7 +1,7 @@
 /*
  * Photos.java
  * Auteur: Alexandre Schweizer
- * Date de crï¿½ation: 6 juin 2018
+ * Date de création: 6 juin 2018
  */
 
 package Gallery_Photos;
