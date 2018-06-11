@@ -5,7 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import main.BasicPanel;
@@ -37,11 +38,8 @@ public class CalculatorPanel extends BasicPanel {
 	    
 	}	
 	
-	field.setForeground(Color.BLACK);
-	field.setSize(new Dimension(300, 150));
-	field.setFont(new Font("Serif", Font.BOLD, 70));
-	field.setHorizontalAlignment(SwingConstants.RIGHT);
-	field.setForeground(Color.WHITE);
+	field = customizeLabel(field);
+	
 	champPan.setBackground(Color.BLACK);
 	champPan.setPreferredSize(new Dimension(50, 100));
 	champPan.add(field);
@@ -68,18 +66,11 @@ public class CalculatorPanel extends BasicPanel {
 	equal.setText("=");
 	
 	
-	
-	zero.setBackground(new Color(51,51,51));
-	zero.setForeground(Color.BLACK);
-	zero.setFocusPainted(false);
-	zero.setFont(new Font("Serif", Font.BOLD, 22));
-	zero.setForeground(Color.WHITE);
+	zero = customizeButton(zero);
 	equal.setBackground(new Color(255,153,0));
 	
 	
-	zero.setPreferredSize(new Dimension(135, 70));
-	comma.setPreferredSize(new Dimension(70, 70));
-	equal.setPreferredSize(new Dimension(70, 70));
+
 	
 	
 	secondbuttonPan.add(zero,BorderLayout.WEST);
@@ -87,19 +78,113 @@ public class CalculatorPanel extends BasicPanel {
 	secondbuttonPan.add(equal,BorderLayout.EAST);
 
 	
-
-	
-
-	
-	
-	
-	
 	
 	calculator.add(champPan,BorderLayout.NORTH);
 	calculator.add(buttonsPan, BorderLayout.CENTER);
 	calculator.add(secondbuttonPan,BorderLayout.SOUTH);
 	this.add(calculator);
 	
+		
+	}
+	
+	public JLabel customizeLabel(JLabel lab) {
+		
+		lab.setForeground(Color.BLACK);
+		lab.setSize(new Dimension(300, 150));
+		lab.setFont(new Font("Serif", Font.BOLD, 70));
+		lab.setHorizontalAlignment(SwingConstants.RIGHT);
+		lab.setForeground(Color.WHITE);
+		
+		return lab;
+	}
+	
+	public JButton customizeButton(JButton but) {
+		
+		but.setBackground(new Color(51,51,51));
+		but.setForeground(Color.BLACK);
+		but.setFocusPainted(false);
+		but.setFont(new Font("Serif", Font.BOLD, 22));
+		but.setForeground(Color.WHITE);
+		but.setPreferredSize(new Dimension(135, 70));
+		
+		
+		return but;
+	}
+	
+	public void actionListners() {
+		
+		for (int i = 0; i < button.length; i++) {
+			
+			switch(i) {
+			
+			case 0 :
+				new AcListner();
+				break;
+			case 1 :
+				new MinusplusListner();
+				break;
+				
+			case 2 :
+				new pourcentageListner();
+				break;
+				
+			case 3 :
+				new devisionListner();
+				break;
+				
+			case 4 :
+				new multiplicationListner();
+				break;
+				
+			case 5 :
+				new minusListner();
+				break;
+				
+			case 6 :
+				new plusListner();
+				break;
+				
+			case 7 :
+				new commaListner();
+				break;
+				
+			case 8 :
+				new equalListner();
+				break;
+				
+			default :                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+			
+			    new numberlistner();
+			    break;
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			}
+			
+		}
+		
+	}
+	
+	
+	public class AcListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		
 		
 	}
 	
