@@ -23,7 +23,7 @@ public class CalculatorPanel extends BasicPanel {
     private JPanel secondbuttonPan = new BasicPanel();
     private JPanel champPan = new BasicPanel();
     private JLabel field = new JLabel("0");
-    private String[] values = {"AC","+/-","%","Ã·","7","8","9","Ã—","4","5","6","-","1","2","3","+","+"};
+    private String[] values = {"AC","+/-","%","÷","7","8","9","×","4","5","6","-","1","2","3","+","+"};
     private double result;
 	
 	public CalculatorPanel() {
