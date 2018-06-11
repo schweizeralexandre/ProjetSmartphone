@@ -24,6 +24,7 @@ public class CalculatorPanel extends BasicPanel {
     private JPanel champPan = new BasicPanel();
     private JLabel field = new JLabel("0");
     private String[] values = {"AC","+/-","%","÷","7","8","9","×","4","5","6","-","1","2","3","+","+"};
+    private double result;
 	
 	public CalculatorPanel() {
 		
@@ -70,7 +71,7 @@ public class CalculatorPanel extends BasicPanel {
 	equal.setBackground(new Color(255,153,0));
 	
 	
-
+    actionListners();
 	
 	
 	secondbuttonPan.add(zero,BorderLayout.WEST);
@@ -114,47 +115,48 @@ public class CalculatorPanel extends BasicPanel {
 	public void actionListners() {
 		
 		for (int i = 0; i < button.length; i++) {
+			//button[i].addActionListener(new MinusplusListner());
 			
-			switch(i) {
+		switch(i) {
 			
 			case 0 :
-				new AcListner();
+				button[i].addActionListener(new AcListner());
 				break;
 			case 1 :
-				new MinusplusListner();
+				button[i].addActionListener(new MinusplusListner());
 				break;
 				
 			case 2 :
-				new pourcentageListner();
+				new PourcentageListner();
 				break;
 				
 			case 3 :
-				new devisionListner();
+				new DevisionListner();
 				break;
 				
 			case 4 :
-				new multiplicationListner();
+				new MultiplicationListner();
 				break;
 				
 			case 5 :
-				new minusListner();
+				new MinusListner();
 				break;
 				
 			case 6 :
-				new plusListner();
+				new PlusListner();
 				break;
 				
 			case 7 :
-				new commaListner();
+				new CommaListner();
 				break;
 				
 			case 8 :
-				new equalListner();
+				new EqualListner();
 				break;
 				
 			default :                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 			
-			    new numberlistner();
+			    new Numberlistner();
 			    break;
 			
 			
@@ -182,13 +184,108 @@ public class CalculatorPanel extends BasicPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			
+			field.setText("0");
 		}
 		
 		
 		
 	}
 	
+	public class MinusplusListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			field.setText("-");
+			
+		}
+		
+	
+		
+		
+	}
 	
 	
+	public class PourcentageListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			
+		}
+		
+	}
 	
+	public class DevisionListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+
+	public class  MultiplicationListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	public class MinusListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	public class PlusListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	public class CommaListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	public class EqualListner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	public class Numberlistner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
 }
