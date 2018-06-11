@@ -39,15 +39,16 @@ class Photo extends JButton {
 
 	JLabel icon = new JLabel();
 	JPanel optionsPanel = new JPanel();
-
+int id;
 
 
 	public Photo(String pictureName, String[] cardList, CardLayout display, GalleryPanel galleryPanel, int id) {
 		this.pictureName=pictureName ;
+		this.id=id;
 		this.galleryPanel=galleryPanel;
 		setBorderPainted(false);
 		setOpaque(false);
-		FullScreenImage displayPhotoPanel = new FullScreenImage(pictureName, galleryPanel) ;
+		FullScreenImage displayPhotoPanel = new FullScreenImage(pictureName, galleryPanel,this) ;
 		setPreferredSize(new Dimension(135, 135));
 		setContentAreaFilled(false);
 		displayPhotoPanel.setLayout(new BorderLayout());
@@ -127,11 +128,11 @@ class Photo extends JButton {
 		private JButton deleteButton ;
 
 		private JLabel nomPhoto  ;
+		Photo photo ;
 
 
-
-		public FullScreenImage(String pictureName,GalleryPanel gp) {
-
+		public FullScreenImage(String pictureName,GalleryPanel gp,Photo photo) {
+			this.photo=photo;
 			returnButton = new OptionsButton("Images/back_button.png",gp) ;
 			nomPhoto = new JLabel(pictureName.replaceAll("Images/", "")) ;
 			deleteButton = new OptionsButton("Images/delete_button.png",gp) ;
@@ -192,7 +193,16 @@ class Photo extends JButton {
 					int action = JOptionPane.showConfirmDialog(FullScreenImage.this, "Voulez-vous vraiment supprimer la photo ?", "Suppression", JOptionPane.OK_CANCEL_OPTION) ;
 
 					if(action == JOptionPane.OK_OPTION) {
-						//ArrayList.get(i).remove ;
+					gp.ImageGallery.remove(photo.id);//.get(i).remove ;
+					
+					try {
+						gp.serialize(gp.ImageGallery);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					gp.displayImage();
+					gp.changePanel("GalleryPanel") ;
 					}
 				}
 
