@@ -18,8 +18,12 @@ import Meteo.WeatherPanel;
 
 public class MainFrame extends JFrame {
 	
+	/**
+	 * Class qui permet ajouter les différents panels
+	 * @author ashan 
+	 * 
+	 */
 	
-
 	private static CardLayout cl = new CardLayout();
 	
 	// panel qui permet de gérer le cardLayout
@@ -34,25 +38,12 @@ public class MainFrame extends JFrame {
 	private JLabel label = new JLabel();
 	private MenuButtonPanel homebutton = new MenuButtonPanel();
 	private TopScreenPanel topscreen = new TopScreenPanel();
-	//public ContactViewPanel contactview;
-	//private NewContactPanel newcontact = new NewContactPanel(contacts,contactview);
+	
 	
 	
 	
 	public MainFrame() {
-		
-	/*for (int i = 0; i < newcontact.getPerson().size(); i++) {
-		contactview = new ContactViewPanel(newcontact.getPerson(),newcontact);
-		System.out.println( newcontact.getPerson().size());
-	}
-		*/
-		
-		
-	
-		
-		
-	
-		
+
 		
 	this.add(mainScreen,BorderLayout.CENTER);
 	this.add(homebutton, BorderLayout.SOUTH);
@@ -73,8 +64,6 @@ public class MainFrame extends JFrame {
 	cards.setLayout(cl);
 	cards.add(mainScreen, "MainScreenPanel");
 	cards.add(contacts, "ContactPanel");
-	/*cards.add(newcontact, "NewContact");
-	cards.add(contactview,"contactView");*/
 	cards.add(gallery, "GalleryPanel");
 	cards.add(calculator, "CalculatorPanel");
 	cards.add(weather, "WeatherPanel");
@@ -97,6 +86,11 @@ public class MainFrame extends JFrame {
 		
 		
 	}
+	
+	/**
+	 * méthode qui permet de changer le mainscreen via cardslayout
+	 * @param name
+	 */
 	
     // méthode qui permet de changer les panels via les boutons
 	public static void changePanel(String name){

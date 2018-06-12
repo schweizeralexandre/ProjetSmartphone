@@ -49,13 +49,17 @@ public class ContactPicturePanel extends BasicPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					modify.addimage.setIcon(photo.get(j).getIcon());
+				    pan.getPerson().get(modify.id).setImage(images.get(j));
+				    ImageIcon img = new ImageIcon(pan.getPerson().get(modify.id).getImage());
+				    pan.contactview.contactImage.setIcon(img);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 				
-				modify.addimage.setIcon(photo.get(j).getIcon());
-			    pan.getPerson().get(modify.id).setImage(images.get(j));
-			   
 			
-                ImageIcon img = new ImageIcon(pan.getPerson().get(modify.id).getImage());
-	            pan.contactview.contactImage.setIcon(img);
+//              
 			    
 			    
 			    

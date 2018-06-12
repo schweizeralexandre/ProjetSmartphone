@@ -101,7 +101,7 @@ public class ContactView extends BasicPanel{
 	    
 	  
 
-
+	    
 
         for( ActionListener al : contactmodify.Deletebut.getActionListeners() ) {
     	contactmodify.Deletebut.removeActionListener( al );
@@ -195,7 +195,7 @@ public class ContactView extends BasicPanel{
 				contactmodify.id=j;
 				
 				ImageIcon img = new ImageIcon(person.get(j).getImage());
-				contactImage.setIcon(img);
+				//contactImage.setIcon(img);
 			
 				contactmodify.champs[0].setText(contactPanel.getPerson().get(j).getName());
 				contactmodify.champs[1].setText(contactPanel.getPerson().get(j).getSurname());

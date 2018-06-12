@@ -88,6 +88,7 @@ public class ContactList extends BasicPanel{
 			
 			testcontact= false;
 			contactPanel.contactmodify.Deletebut.setEnabled(false);
+			contactPanel.contactmodify.addimage.setIcon(null);
 			
 			
 			cards.show(contactPanel, "contactmodify");

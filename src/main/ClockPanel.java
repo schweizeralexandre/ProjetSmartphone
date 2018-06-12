@@ -5,9 +5,15 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
-import java.time.Clock;
 import java.util.Date;
 import javax.swing.*;
+
+
+/**
+ * class qui permet de créer l'horlage 
+ * @author ashan
+ *
+ */
 
 public class ClockPanel extends JPanel{
 	
@@ -23,7 +29,7 @@ public class ClockPanel extends JPanel{
 	    Timer timer = new Timer(50, (ActionListener) new ActionListener() {
 	      @Override
 	      public void actionPerformed(ActionEvent e) {
-	        tickTock();
+	      tickTock();
 	      }
 	    });
 	    timer.setRepeats(true);
@@ -36,6 +42,9 @@ public class ClockPanel extends JPanel{
 		
 	}
 	
+	/**
+	 * méthode qui permet de ajouter l'heure actuelle et la date au panel
+	 */
 	
 	public void tickTock() {
 		    clock.setText(DateFormat.getDateTimeInstance().format(new Date()));

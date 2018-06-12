@@ -1,13 +1,11 @@
 package main;
 
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -19,8 +17,6 @@ public class TopScreenPanel extends JPanel {
 	
 	public TopScreenPanel() {
 		
-		/*toplabel.setIcon(new ImageIcon("Images/topScreen.png"));
-		add(toplabel,BorderLayout.CENTER);*/
 		this.setPreferredSize(new Dimension(200, 60));
 	    this.setBackground(new Color(51,51,51));
 		
