@@ -50,7 +50,7 @@ class Photo extends JButton {
 	/**
 	 * 
 	 * Constructeur de photo permettant de redimensionner dans la galerie à la taille souhaitée (135x135) 
-	 * et également de l'afficher en grand
+	 * et également de l'afficher en grand via un ActionListener
 	 * 
 	 * @param pictureName
 	 * @param cardList
@@ -139,7 +139,6 @@ class Photo extends JButton {
 
 
 		private JPanel deletePanel = new JPanel() ;
-
 		private JButton returnButton ;
 		private JButton deleteButton ;
 
@@ -147,7 +146,7 @@ class Photo extends JButton {
 		Photo photo ;
 
 		/**
-		 * Méthode permettant l'affichage des options haut dessus de la grande image
+		 * Méthode permettant l'affichage des options au dessus de la grande image
 		 * @param pictureName
 		 * @param gp
 		 * @param photo
@@ -169,6 +168,9 @@ class Photo extends JButton {
 			optionsPanel.add(nomPhoto) ;
 			optionsPanel.add(deleteButton) ;
 
+			/**
+			 * ActionListener permettant de retourner sur la grille d'image de la galerie
+			 */
 
 			returnButton.addActionListener(new ActionListener() {
 
@@ -179,6 +181,9 @@ class Photo extends JButton {
 				}
 			}) ;
 
+			/**
+			 * ActionListener permettant de pouvoir supprimer une image et de serialiser à nouveau la liste d'images
+			 */
 
 			deleteButton.addActionListener(new ActionListener() {
 
