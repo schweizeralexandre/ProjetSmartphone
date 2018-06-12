@@ -35,6 +35,14 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+/**
+ * Cette classe permet d'effectuer un requête http vers l'api d'OpenWeatherMap
+ * qui va retourner les informations au format JSON.
+ * Ces infos seront ensuite utilsées pour retourner les températures et le temps.
+ * @author Alex
+ *
+ */
+
 public class WeatherPanel extends BasicPanel {
 
 	private JPanel weatherPanel = new JPanel() ;
@@ -62,7 +70,9 @@ public class WeatherPanel extends BasicPanel {
 
 
 
-		//URL contenant la clé d'API et l'id de la ville de Sierre
+		/**
+		 * URL contenant la clé d'API et l'id de la ville de Sierre
+		 */
 
 		String urlWeather = "http://api.openweathermap.org/data/2.5/weather?id=7287165&units=metric&APPID=6f5fe3ba8b1b33f969570ff3b5194913&lang=fr" ;
 
@@ -72,13 +82,26 @@ public class WeatherPanel extends BasicPanel {
 
 		Call call = client.newCall(request) ;
 
+		/**
+		 * Méthode permettant de faire une requête asynchrone
+		 * Vu sur: https://github.com/square/okhttp/wiki/Recipes
+		 */
+		
 		call.enqueue(new Callback()  {
 
+			/**
+			 * Affiche un message d'erreur car la connexion n'est pas établie.
+			 */
+			
 			@Override
 			public void onFailure(Call call, IOException arg1) {
 				// TODO Auto-generated method stub
 				JOptionPane.showMessageDialog(null, "Une erreur est survenue. Veuillez vérifier votre connexion Internet ou bien réessayer un peu plus tard", "Weather" , JOptionPane.ERROR_MESSAGE) ;			}
 
+			/**
+			 * Récupère les informations au format JSON s'il y arrive ou affiche un message d'erreur générique
+			 */
+			
 			@Override
 			public void onResponse(Call call, Response resp) {
 				// TODO Auto-generated method stub
@@ -100,6 +123,11 @@ public class WeatherPanel extends BasicPanel {
 
 						String infoMeteo = info.toJSONString() ;
 						String retourInfo = "" ;
+						
+						/**
+						 * Permet de récupérer le contenu de la description, 
+						 * car je l'arrivais pas à le faire avec le JSONArray
+						 */
 
 						for (int i = 0; i <infoMeteo.length(); i++) {
 							if(infoMeteo.charAt(i)==infoMeteo.charAt(2)) ;
@@ -117,13 +145,6 @@ public class WeatherPanel extends BasicPanel {
 							j++ ;
 
 						} while (retourInfo.charAt(j)!=',') ;
-
-						//						System.out.println(description) ;
-						//						System.out.println(name) ;
-						//						System.out.println(temp) ;
-						//						System.out.println(min) ;
-						//						System.out.println(max) ;
-						//						System.out.println(info) ;
 
 
 						city = new JLabel(name) ;
@@ -161,6 +182,10 @@ public class WeatherPanel extends BasicPanel {
 						meteo.setForeground(Color.WHITE) ;
 						meteo.setPreferredSize(new Dimension(270, 135)) ;
 
+						/**
+						 * Permet d'écrire la météo du moment dans un fichier txt et de le lire dans la console
+						 */
+						
 						File dossier = new File("ReadAndWrite") ;
 						dossier.mkdirs() ;
 

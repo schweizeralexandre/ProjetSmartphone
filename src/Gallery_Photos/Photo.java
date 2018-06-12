@@ -27,8 +27,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * Cette classe permet d'afficher l'image en grand ou sous le format d'une icône.
+ * @author Alex
+ *
+ */
 
 class Photo extends JButton {
+
+
 
 	String path = "Images/" ;
 	String pictureName ;
@@ -40,6 +47,17 @@ class Photo extends JButton {
 	JPanel optionsPanel = new JPanel() ;
 	int id ;
 
+	/**
+	 * 
+	 * Constructeur de photo permettant de redimensionner dans la galerie à la taille souhaitée (135x135) 
+	 * et également de l'afficher en grand
+	 * 
+	 * @param pictureName
+	 * @param cardList
+	 * @param display 
+	 * @param galleryPanel
+	 * @param id
+	 */
 
 	public Photo(String pictureName, String[] cardList, CardLayout display, GalleryPanel galleryPanel, int id) {
 		this.pictureName=pictureName ;
@@ -91,8 +109,19 @@ class Photo extends JButton {
 
 
 	} 
-	
+
+	/**
+	 * Méthode permettant de redimensionner les images en icône grâce à Graphics2D
+	 * Vu sur: https://docs.oracle.com/javase/tutorial/displayCode.html?code=https://docs.oracle.com/javase/tutorial/uiswing/examples/components/IconDemoProject/src/components/IconDemoApp.java
+	 * @param img - Image à redimensionner
+	 * @param x - largeur désirée
+	 * @param y - hauteur désirée
+	 * @return - Image redimensionnée
+	 */
+
 	private Image getImageIcon (Image img, int x, int y) {
+
+
 		BufferedImage resizedImg = new BufferedImage(x, y, BufferedImage.TYPE_INT_RGB) ;
 		Graphics2D g2 = resizedImg.createGraphics() ;
 		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR) ;
@@ -101,6 +130,11 @@ class Photo extends JButton {
 		return resizedImg ;
 	}
 
+	/**
+	 * 
+	 * Classe qui créer le panel qui va accueillir l'image en grand
+	 *
+	 */
 	class FullScreenImage extends JPanel {
 
 
@@ -112,21 +146,29 @@ class Photo extends JButton {
 		private JLabel nomPhoto  ;
 		Photo photo ;
 
+		/**
+		 * Méthode permettant l'affichage des options haut dessus de la grande image
+		 * @param pictureName
+		 * @param gp
+		 * @param photo
+		 */
+
 
 		public FullScreenImage(String pictureName, GalleryPanel gp, Photo photo) {
 			this.photo=photo ;
 			returnButton = new OptionsButton("Images/back_button.png",gp) ;
 			nomPhoto = new JLabel(pictureName.replaceAll("Images/", "")) ;
 			deleteButton = new OptionsButton("Images/delete_button.png",gp) ;
-			
-			
+
+
 			deletePanel.setLayout (new GridLayout(1, 3)) ;
 			deletePanel.setBackground(Color.white) ;
-			
+
 			optionsPanel.add(deletePanel) ;
 			optionsPanel.add(returnButton) ;
 			optionsPanel.add(nomPhoto) ;
 			optionsPanel.add(deleteButton) ;
+
 
 			returnButton.addActionListener(new ActionListener() {
 
@@ -167,7 +209,11 @@ class Photo extends JButton {
 
 		}
 
-
+		/**
+		 * 
+		 * Classe qui permet d'éviter de réécrire du code pour les boutons
+		 *
+		 */
 
 		public class OptionsButton extends JButton {
 
@@ -176,7 +222,7 @@ class Photo extends JButton {
 			public OptionsButton(String str,GalleryPanel gp) {
 				path = str ;
 				this.gp=gp ;
-//				setCursor(new Cursor(Cursor.HAND_CURSOR)) ;
+
 				setCursor(new Cursor(Cursor.HAND_CURSOR)) ;
 				setOpaque(false) ;
 				setContentAreaFilled(false) ;
@@ -194,31 +240,6 @@ class Photo extends JButton {
 
 			}
 
-
-			//			//	public class Retour implements ActionListener {
-			//			//
-			//			//		@Override
-			//			//		public void actionPerformed(ActionEvent e) {
-			//			//			// TODO Auto-generated method stub
-			//			//			gp.changePanel("GalleryPanel") ;
-			//			//		}
-			//			//
-			//			//
-			//			//	}
-			//
-			////			public class Delete implements ActionListener {
-			////
-			////				@Override
-			////				public void actionPerformed(ActionEvent e) {
-			////					// TODO Auto-generated method stub
-			////					gp.changePanel("GalleryPanel") ;
-			////				}
-			////
-			////
-			////			}
-			//
-			//		}
-			//}
 		}
 	}
 }

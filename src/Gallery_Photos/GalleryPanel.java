@@ -34,7 +34,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import main.MainFrame;
 
-
+/**
+ * 
+ * @author Alex
+ * Cette classe permet l'affichage de l'interface graphique de la galerie.
+ */
 
 public class GalleryPanel extends JPanel {
 
@@ -46,11 +50,11 @@ public class GalleryPanel extends JPanel {
 
 
 	public JPanel getPhotoPanel() {
-		return photoPanel;
+		return photoPanel ;
 	}
 
 	public void setPhotoPanel(JPanel photoPanel) {
-		this.photoPanel = photoPanel;
+		this.photoPanel = photoPanel ;
 	}
 
 	private JButton returnButton = new GaleryButton("Images/back_button.png") ;
@@ -66,10 +70,11 @@ public class GalleryPanel extends JPanel {
 
 	ArrayList <String> ImageGallery ;
 
-
+	/**
+	 * Constructeur
+	 */
 
 	public GalleryPanel() {
-
 
 
 		try {
@@ -81,7 +86,7 @@ public class GalleryPanel extends JPanel {
 
 
 
-		galeryPanel.setLayout(new BorderLayout());
+		galeryPanel.setLayout(new BorderLayout()) ;
 		menuPanel.setLayout(new GridLayout(1, 3)) ;
 
 
@@ -90,8 +95,8 @@ public class GalleryPanel extends JPanel {
 
 
 		galeryPanel.add(ScrollBar, BorderLayout.CENTER) ;
-		photoPanel.setBackground(Color.lightGray);
-		galeryPanel.add(menuPanel,BorderLayout.NORTH);
+		photoPanel.setBackground(Color.lightGray) ;
+		galeryPanel.add(menuPanel,BorderLayout.NORTH) ;
 
 
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER) ;
@@ -117,31 +122,33 @@ public class GalleryPanel extends JPanel {
 
 
 		displayImage() ;
-		
-
-
-
-
-
-
-
-
 
 	}
 
+
 	public ArrayList<String> getImageGallery() {
+
 		return ImageGallery ;
 	}
 	public void setImageGallery(ArrayList<String> imageGallery) {
 		ImageGallery = imageGallery ;
 	}
+
+	/**
+	 * Méthode qui permet de changer d'un panel à l'autre
+	 * @param string
+	 */
+
 	public void changePanel(String string) {
 		// TODO Auto-generated method stub
 		display.show(this, string) ;
 	}
 
 
-
+	/**
+	 * Méthode permettant d'afficher les images dans la galerie.
+	 */
+	
 	void displayImage() {
 		photoPanel.removeAll() ;
 		for (int i = 0; i < ImageGallery.size(); i++) {
@@ -151,6 +158,12 @@ public class GalleryPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Méthode qui sérialise les images de la galerie dans un fichier ser
+	 * @param ImageGallery
+	 * @throws IOException
+	 */
+	
 	void serialize (ArrayList <String> ImageGallery) throws IOException {
 		FileOutputStream fichier = new FileOutputStream("sauvegardeImages/sauvegardeImages.ser") ;
 		BufferedOutputStream bfichier = new BufferedOutputStream(fichier) ;
@@ -158,9 +171,17 @@ public class GalleryPanel extends JPanel {
 		obfichier.writeObject(ImageGallery) ;
 		obfichier.close() ;
 	}
+	
+	/**
+	 * Méthode qui désérialise
+	 * @return
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 
 	public ArrayList <String> deserialize() throws IOException, ClassNotFoundException
 	{
+
 		ArrayList <String> ImageGallery = new ArrayList() ;
 		FileInputStream ffichier = new FileInputStream ("sauvegardeImages/sauvegardeImages.ser") ;
 		BufferedInputStream bfichier = new BufferedInputStream (ffichier) ;
@@ -170,25 +191,31 @@ public class GalleryPanel extends JPanel {
 		obfichier.close() ;
 		return ImageGallery ;
 
+
+
 	}
 
 
+	/**
+	 * 
+	 * Cette classe affiche les icones des images dans la galerie
+	 *
+	 */
 
 
 	class GaleryButton extends JButton {
 
+		
 		private String path;
 
 		public GaleryButton(String str) {
+			
 			path = str;
-
 			setCursor(new Cursor(Cursor.HAND_CURSOR));
 			setCursor(new Cursor(Cursor.HAND_CURSOR));
 			setOpaque(false);
 			setContentAreaFilled(false);
 			setBorderPainted(false);
-
-
 
 
 			try {
@@ -201,6 +228,12 @@ public class GalleryPanel extends JPanel {
 		}
 
 	}
+	
+	/**
+	 * 
+	 * Cette classe d'ActionListener permet d'effectuer un retour sur le MainPanel.
+	 *
+	 */
 
 	public class Retour implements ActionListener {
 
@@ -212,11 +245,19 @@ public class GalleryPanel extends JPanel {
 
 
 	}
+	
+	/**
+	 * 
+	 * Cette classe permet via un filechooser de pouvoir importer une image.
+	 * 
+	 */
 
 	public class Import implements ActionListener {
 
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
+
 
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setDialogTitle("Open Resource File") ;
