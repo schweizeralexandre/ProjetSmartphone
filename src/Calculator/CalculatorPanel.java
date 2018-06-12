@@ -85,7 +85,7 @@ public class CalculatorPanel extends BasicPanel {
 
 		lab.setForeground(Color.BLACK);
 		lab.setSize(new Dimension(300, 150));
-		lab.setFont(new Font("Serif", Font.BOLD, 70));
+		lab.setFont(new Font("Serif", Font.BOLD, 40));
 		lab.setHorizontalAlignment(SwingConstants.RIGHT);
 		lab.setForeground(Color.WHITE);
 
