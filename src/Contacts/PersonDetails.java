@@ -23,17 +23,7 @@ public class PersonDetails implements Serializable {
 		
 		
 	}
-//
-//	public PersonDetails(String surname, String name, String email, String num1, String num2,String image) {
-//		
-//		this.surname = surname;
-//		this.name = name;
-//		this.email = email;
-//		this.num1 = num1;
-//		this.num2 = num2;
-//		this.image = image;
-//		
-//	}
+
 	public String getSurname() {
 		return surname;
 	}

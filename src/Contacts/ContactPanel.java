@@ -25,21 +25,12 @@ import javax.swing.*;
 
 import Gallery_Photos.GalleryPanel;
 
-//import com.sun.xml.internal.ws.api.config.management.policy.ManagedServiceAssertion.ImplementationRecord;
 
 import main.BasicPanel;
 
 
 public class ContactPanel extends BasicPanel {
 
-	//private TopContactPanel topContactMainScreen = new TopContactPanel();
-	//protected JPanel savedContacts = new BasicPanel();
-	//private JList list;
-    //private ArrayList<PersonDetails> person = new ArrayList<>();
-    //private CardLayout cards = new CardLayout();
-    //private ContactList contactlist = new ContactList(this,cards,person);
-    //private ContactView contactview = new ContactView(this,cards,person);
-    //private ContactModify contactmodify = new ContactModify(this,cards,person);
 
 	private ArrayList<PersonDetails> person;
     protected CardLayout cards = new CardLayout();
@@ -50,18 +41,18 @@ public class ContactPanel extends BasicPanel {
     protected ContactPicturePanel picturepanel;
     private int j;
     protected ButtonContact button;
-    //protected GalleryPanel myphotos = new GalleryPanel();
+    
 
   
 	
 	public ContactPanel() {	
 	try {
 		person=deserializeObject();
-		System.out.println("ok");
 	} catch (Exception e) {
 		person= new ArrayList<>();
 	}
-	//contactview = new ContactView(this,cards,person);
+	
+	
 	contactlist = new ContactList(this,cards,person);
 	contactmodify= new ContactModify(this,cards,person);
 	picturepanel = new ContactPicturePanel(contactmodify, this);
@@ -89,7 +80,6 @@ public class ContactPanel extends BasicPanel {
 			
 		 ButtonContact button = new ButtonContact(person.get(i).getName()+" "+person.get(i).getSurname(), i);
 			nea.add(button);
-			System.out.println(person.get(i).getImage());
 			this.button = button;
 			button.addActionListener(new ActionListener() {
 				
@@ -135,26 +125,7 @@ public class ContactPanel extends BasicPanel {
 	
 	
 
-	
-	/*class deletecontact implements ActionListener{
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			if(e.getSource()==contactmodify.Deletebut)
-				contactlist.savedContacts.remove(button);
-			    
-			     cards.show(contactlist,"contactlist");
-				System.out.println("yyyyyyyy");
-			
-			
-			
-			
-		}*/
-	
-		
-		
-	//}
 	
 
 }

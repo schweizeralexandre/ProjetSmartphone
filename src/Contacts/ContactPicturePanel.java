@@ -17,11 +17,10 @@ import main.ButtonClass;
 
 public class ContactPicturePanel extends BasicPanel{
 	
-	GalleryPanel gallerypan;
-	ArrayList<String> images =  new ArrayList<>();
-	ArrayList<ButtonClass> photo;
-    JPanel picpanel = new BasicPanel();
-    //protected int j;
+	private GalleryPanel gallerypan;
+	private ArrayList<String> images =  new ArrayList<>();
+	private ArrayList<ButtonClass> photo;
+    private JPanel picpanel = new BasicPanel();
 	private ContactModify modify;
 	private ContactPanel pan;
 	
@@ -43,34 +42,19 @@ public class ContactPicturePanel extends BasicPanel{
 		   photo.add(new ButtonClass(images.get(i)));
 		   picpanel.add(photo.get(i));
 		   photo.get(i).setPreferredSize(new Dimension(120, 100));
-		   //photo.get(i).addActionListener(new ContactpictureListner());
-		   
+		 
 		   int j = i;
 		   
 		   photo.get(i).addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-			/*	System.out.println(images.get(j));
-				pan.getPerson().get(modify.id).setImage(images.get(j));
-				modify.addimage.setIcon(photo.get(j).getIcon());
-				//photo.get(j);
-				System.out.println(pan.getPerson().get(j));
-				ImageIcon img = new ImageIcon(pan.getPerson().get(j).getImage());
-			
-				
-	            pan.contactview.contactImage.setIcon(img);
-	           // pan.contactview.contactImage.getIcon()(img);
-				System.out.println("xxxxx");*/
 				
 				modify.addimage.setIcon(photo.get(j).getIcon());
 			    pan.getPerson().get(modify.id).setImage(images.get(j));
 			   
 			
                 ImageIcon img = new ImageIcon(pan.getPerson().get(modify.id).getImage());
-                System.out.println(pan.contactview);
-              //  System.out.println(pan.contactview.contactImage);
 	            pan.contactview.contactImage.setIcon(img);
 			    
 			    
@@ -86,21 +70,14 @@ public class ContactPicturePanel extends BasicPanel{
 		});
 		}
 		
-		//images = this.deserialize();
 		
 		for (int i = 0; i < photo.size(); i++) {
 			
 			try {
 		         ImageIcon img = new ImageIcon(images.get(i));
-		        
-		       //  Image image = img.getImage();
-		         
 		         Image picture  = getImageIcon(img.getImage(), 270, 250);
-		         //img = getImageIcon(img,135,135) ;
-		         
 		         photo.get(i).setIcon(new ImageIcon(picture)) ;
-		         
-				//contactImage.setIcon(img);
+		      
 			} catch (Exception e) {
 				// TODO: handle exception
 			}

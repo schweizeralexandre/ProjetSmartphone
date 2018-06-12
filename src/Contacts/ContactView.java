@@ -5,7 +5,6 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -18,8 +17,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -67,15 +64,11 @@ public class ContactView extends BasicPanel{
 		
 		try {
 	         ImageIcon img = new ImageIcon(person.get(j).getImage());
-	        
-	       //  Image image = img.getImage();
 	         
 	         Image picture  = getImageIcon(img.getImage(), 270, 250);
-	         //img = getImageIcon(img,135,135) ;
-	         
+	        
 				contactImage.setIcon(new ImageIcon(picture)) ;
 	         
-			//contactImage.setIcon(img);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -106,9 +99,7 @@ public class ContactView extends BasicPanel{
 	    this.add(centerpan, BorderLayout.CENTER);
 	    this.add(topPan, BorderLayout.NORTH);
 	    
-	    
-	    
-	    	//contactmodify.cpt++;
+	  
 
 
 
@@ -215,8 +206,7 @@ public class ContactView extends BasicPanel{
 				contactInfo[2].setText(contactPanel.getPerson().get(j).getNum2());
 				contactmodify.Deletebut.setEnabled(true);
 				
-				
-				//contactPanel.getPerson().remove(j);
+			
 				
 				cards.show(contactPanel, "contactmodify");
 			}

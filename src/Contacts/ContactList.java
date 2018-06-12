@@ -35,7 +35,6 @@ public class ContactList extends BasicPanel{
    private JButton addcontact = new ButtonClass("Images/addcontact.png");
    private JLabel contactlabel = new JLabel("Contacts");
    private JScrollPane scrollPanel = new JScrollPane(savedContacts);
-   //private ContactModify modify;
    private boolean testcontact;
 	
 	public ContactList(ContactPanel contactPanel, CardLayout cards, ArrayList<PersonDetails> person) {
@@ -44,7 +43,7 @@ public class ContactList extends BasicPanel{
 		this.contactPanel = contactPanel;
 		this.cards = cards;
 		this.person = person;
-		//this.modify = contactPanel.contactmodify;
+		
 		
 		addcontact.setPreferredSize(new Dimension(28,28));
 		contactlabel.setFont(new Font("Arial", Font.BOLD, 23));

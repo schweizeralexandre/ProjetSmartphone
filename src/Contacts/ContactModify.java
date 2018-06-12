@@ -18,8 +18,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -136,7 +134,6 @@ public class ContactModify extends BasicPanel{
 		c.gridy = 5;
 		contactDetailsPanel.add(champs[4], c);
 		
-		//photoPanel.setLayout(new GridLayout(1, 3));
 		
 		photoPanel.setLayout(new FlowLayout());
 		
@@ -148,18 +145,6 @@ public class ContactModify extends BasicPanel{
 		Deletebut.setEnabled(false);
 		contactDeletePanel.add(Deletebut);
 		
-		/*JLabel imgPanel = new JLabel();
-		Image img = null;
-		try {
-			img = ImageIO.read(new File(person.get(contactPanel.contactview.j).getImage()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		img = getResizedPhoto(img);	
-		imgPanel.setIcon(new ImageIcon(img));*/
-		
-		
-		
 		
 		
 		
@@ -169,27 +154,15 @@ public class ContactModify extends BasicPanel{
 		TopNewcontactPanel.add(newContactLabel, BorderLayout.CENTER);
 		TopNewcontactPanel.add(Okbut, BorderLayout.EAST);
 		TopNewcontactPanel.add(photoPanel,BorderLayout.SOUTH);
-		
-		//contactDetailsPanel.add(addimage,BorderLayout.NORTH);
 		this.add(TopNewcontactPanel, BorderLayout.NORTH);
 		this.add(contactDetailsPanel,BorderLayout.CENTER);
 		this.add(contactDeletePanel, BorderLayout.SOUTH);
 		
-	   // testSaisie();
-		
-		
-		
 
-		
-
+	
 		
 	}
 	
-	/*
-    private Image getResizedPhoto(Image img) {
-		// TODO Auto-generated method stub
-		return img.getScaledInstance( 80, 80,  java.awt.Image.SCALE_SMOOTH );
-	}*/
 
 
 	public JTextField[] getChamps() {
@@ -256,10 +229,8 @@ public class ContactModify extends BasicPanel{
 			
 			if(e.getSource()==addimage) {
 				
-				//MainFrame.changePanel("GalleryPanel");
 				cards.show(contactPanel, "contactpic");
-				
-				// a faire
+			
 			}
 			
 			
@@ -307,7 +278,7 @@ public class ContactModify extends BasicPanel{
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==Okbut) {
-			//	System.out.println(person.size());
+		
 				
 			    try {
 			    	
@@ -319,7 +290,7 @@ public class ContactModify extends BasicPanel{
 					e1.printStackTrace();
 				}
 			    
-			   // contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
+			
 			    
 			      if(contactPanel.contactlist.isTestcontact()==false) {
 			    	contactPanel.getPerson().add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
@@ -338,10 +309,7 @@ public class ContactModify extends BasicPanel{
 			    
 			    
 			    
-			    
-			    /*
-			       contactPanel.getPerson().add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
-			       contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());*/
+
 			       cards.show(contactPanel,"contactlist");
 			       
 			       
@@ -362,15 +330,6 @@ public class ContactModify extends BasicPanel{
 				}
 				
 				Okbut.setEnabled(false);
-				
-				//contactPanel.contactview.contactImage.setIcon(contactPanel.picturepanel.photo.get(0).getIcon());
-				
-				
-				
-				
-					
-				
-				
 				
 				
 				
