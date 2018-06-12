@@ -9,10 +9,15 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+/**
+ * classe permettant d'insérer une image topScreen en haut du smartphone
+ * @author ashan
+ *
+ */
+
 public class TopScreenPanel extends JPanel {
 	
 	
-	private JLabel toplabel = new JLabel();
 	
 	
 	public TopScreenPanel() {
@@ -23,6 +28,12 @@ public class TopScreenPanel extends JPanel {
 		
 	}
 
+	
+	/**
+	 * méthode permettant de redimensionner l'image topScreen sur le topScreenPanel
+	 * 
+	 */
+	
 	protected void paintComponent(Graphics g) {
 		try {
 			Image img = ImageIO.read(new File("Images/topScreen.png"));

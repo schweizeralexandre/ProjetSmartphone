@@ -9,6 +9,11 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+/**
+ * classe qui permet de créer un homeButton
+ * @author ashan
+ *
+ */
 
 public class MenuButtonPanel extends JPanel {
 	
@@ -30,6 +35,11 @@ public class MenuButtonPanel extends JPanel {
 		
 	}
 
+	/**
+	 * classe Action Listner qui permet d'acceder à l'écran principal depuis les différents panels
+	 * @author ashan
+	 *
+	 */
 
 	public class ActionClass implements ActionListener{
 

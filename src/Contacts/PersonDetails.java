@@ -1,6 +1,11 @@
 package Contacts;
 
 import java.io.Serializable;
+/**
+ * classe qui permet de créer la personne qui va passer dans le contact
+ * @author ashan
+ *
+ */
 
 public class PersonDetails implements Serializable {
 
@@ -23,7 +28,7 @@ public class PersonDetails implements Serializable {
 		
 		
 	}
-
+	
 	public String getSurname() {
 		return surname;
 	}

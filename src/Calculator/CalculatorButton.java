@@ -6,8 +6,11 @@ import java.awt.Font;
 
 import javax.swing.*;
 
-
-
+/**
+ * classe qui permet personnaliser  les boutons de la calculatrice
+ * @author ashan
+ *
+ */
 
 
 public class CalculatorButton extends JButton {

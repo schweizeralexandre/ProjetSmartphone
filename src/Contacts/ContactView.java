@@ -26,6 +26,11 @@ import javax.swing.SwingConstants;
 
 import main.BasicPanel;
 
+/**
+ * classe qui permet d'afficher l'aperçu d'un contact qui a été créé
+ * @author ashan
+ *
+ */
 
 public class ContactView extends BasicPanel{
 	
@@ -43,6 +48,14 @@ public class ContactView extends BasicPanel{
     protected int j;
 	private ContactModify contactmodify;
 	
+	/**
+	 * contructeur qui permet de créer l'aperçu pour chaque contact qui a été créé
+	 * @param contactPanel
+	 * @param cards
+	 * @param person
+	 * @param j
+	 * @param contactmodify
+	 */
 
 	public ContactView(ContactPanel contactPanel, CardLayout cards, ArrayList<PersonDetails> person, int j, ContactModify contactmodify) {
 		
@@ -156,6 +169,12 @@ public class ContactView extends BasicPanel{
 		person.clear();
 	}
 
+	/**
+	 * méthode qui permet de personnaliser le bouton contact et modifier
+	 * @param but
+	 * @return
+	 */
+	
      public JButton perzonaliszeButton(JButton but) {
 		
 		but.setBackground(Color.WHITE);
@@ -167,7 +186,11 @@ public class ContactView extends BasicPanel{
 		return but;
 	}
 	
-	
+	/**
+	 * classe actionListner qui permet de retourner au contactlist panel quand le bouton contacts est cliqué
+	 * @author ashan
+	 *
+	 */
 	public class ActionContactList implements ActionListener{
 
 		@Override
@@ -180,6 +203,12 @@ public class ContactView extends BasicPanel{
 		}	
 		
 	}
+	
+	/**
+	 * classe actionListner qui permet modifier un contact qui a été créé
+	 * @author ashan
+	 *
+	 */
 	
 	public class ActionContactModify implements ActionListener{
 
@@ -195,7 +224,7 @@ public class ContactView extends BasicPanel{
 				contactmodify.id=j;
 				
 				ImageIcon img = new ImageIcon(person.get(j).getImage());
-				//contactImage.setIcon(img);
+				contactImage.setIcon(img);
 			
 				contactmodify.champs[0].setText(contactPanel.getPerson().get(j).getName());
 				contactmodify.champs[1].setText(contactPanel.getPerson().get(j).getSurname());
@@ -221,6 +250,13 @@ public class ContactView extends BasicPanel{
 		
 		
 	}
+	
+	/**
+	 * méthode qui permet de récupérer les contacts qui ont été créés afin de les afficher dans modifycontact pour ensuite les modifier
+	 * @return
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 
 	public ArrayList<PersonDetails> deserializeObject() throws IOException, ClassNotFoundException 
 	{
@@ -234,6 +270,14 @@ public class ContactView extends BasicPanel{
 		return personne;
 	}
 	
+	
+	/**
+	 * méthode qui permet redimensionner l'image choisi pour le contact afin de l'afficher dans l'aperçu du contact
+	 * @param img
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	private Image getImageIcon (Image img, int x, int y) {
 		BufferedImage resizedImg = new BufferedImage(x, y, BufferedImage.TYPE_INT_RGB) ;
 		Graphics2D g2 = resizedImg.createGraphics() ;

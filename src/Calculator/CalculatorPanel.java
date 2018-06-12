@@ -10,6 +10,13 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import main.BasicPanel;
 
+/**
+ * classe qui permet de créer la calculatrice 
+ * @author ashan
+ *
+ */
+
+
 public class CalculatorPanel extends BasicPanel {
 
 	private CalculatorButton button[] = new CalculatorButton[16];
@@ -80,6 +87,12 @@ public class CalculatorPanel extends BasicPanel {
 		zero.addActionListener(new Numberlistner());
 
 	}
+	
+	/**
+	 * méthode permettant de personnaliser le JLabel qui affiche le résultat des calculs
+	 * @param lab
+	 * @return
+	 */
 
 	public JLabel customizeLabel(JLabel lab) {
 
@@ -91,6 +104,13 @@ public class CalculatorPanel extends BasicPanel {
 
 		return lab;
 	}
+	
+	
+	/**
+	 * méthode qui permet de personnaliser le bouton 0
+	 * @param but
+	 * @return
+	 */
 
 	public JButton customizeButton(JButton but) {
 
@@ -103,6 +123,10 @@ public class CalculatorPanel extends BasicPanel {
 
 		return but;
 	}
+	
+	/**
+	 * méthode qui permet d'ajouter les actionslistners aux boutons de la calculatrice
+	 */
 
 	public void actionListners() {
 
@@ -153,6 +177,10 @@ public class CalculatorPanel extends BasicPanel {
 		}
 
 	}
+	
+	/**
+	 * méthode qui permet de faire des calculs avec différents opérarteurs
+	 */
 
 	public void calculOperateurs() {
 
@@ -183,6 +211,12 @@ public class CalculatorPanel extends BasicPanel {
 		}
 
 	}
+	
+	/**
+	 * méthode qui teste la division avec un 0
+	 * @param num
+	 * @return
+	 */
 
 	public String division(Double num) {
 
@@ -196,6 +230,13 @@ public class CalculatorPanel extends BasicPanel {
 			return String.valueOf(result);
 		}
 	}
+	
+	
+	/**
+	 * classe ActionListner qui met le label à 0 quand le bouton AC est appuyé
+	 * @author ashan
+	 *
+	 */
 
 	public class AcListner implements ActionListener {
 
@@ -210,6 +251,12 @@ public class CalculatorPanel extends BasicPanel {
 		}
 
 	}
+	
+	/**
+	 * classe ActionListner qui permet de faire la soustraction quand le bouton - est appuyé
+	 * @author ashan
+	 *
+	 */
 
 	public class MinusplusListner implements ActionListener {
 
@@ -225,6 +272,12 @@ public class CalculatorPanel extends BasicPanel {
 		}
 
 	}
+	
+	/**
+	 * classe ActionListner qui met la valeur affiché sur le label en pourcent
+	 * @author ashan
+	 *
+	 */
 
 	public class PourcentageListner implements ActionListener {
 
@@ -248,6 +301,12 @@ public class CalculatorPanel extends BasicPanel {
 		}
 
 	}
+	
+	/**
+	 * classe ActionListner qui permet d'effectuer une division
+	 * @author ashan
+	 *
+	 */
 
 	public class DevisionListner implements ActionListener {
 
@@ -266,6 +325,13 @@ public class CalculatorPanel extends BasicPanel {
 		}
 
 	}
+	
+	/**
+	 * classe ActionListner qui permet d'effectuer une multiplication
+	 * @author ashan
+	 *
+	 */
+
 
 	public class MultiplicationListner implements ActionListener {
 
@@ -285,6 +351,13 @@ public class CalculatorPanel extends BasicPanel {
 		}
 
 	}
+	
+	/**
+	 * classe ActionListner qui permet d'effectuer une soustraction
+	 * @author ashan
+	 *
+	 */
+
 
 	public class MinusListner implements ActionListener {
 
@@ -303,6 +376,13 @@ public class CalculatorPanel extends BasicPanel {
 		}
 
 	}
+	
+	/**
+	 * classe ActionListner qui permet d'effectuer une addition
+	 * @author ashan
+	 *
+	 */
+
 
 	public class PlusListner implements ActionListener {
 
@@ -322,16 +402,13 @@ public class CalculatorPanel extends BasicPanel {
 
 	}
 
-	public class CommaListner implements ActionListener {
+	/**
+	 * classe ActionListner qui permet d'afficher le resultat des calculs
+	 * @author ashan
+	 *
+	 */
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-	}
-
+	
 	public class EqualListner implements ActionListener {
 
 		@Override
@@ -343,6 +420,13 @@ public class CalculatorPanel extends BasicPanel {
 		}
 
 	}
+	
+	/**
+	 * classe ActionListner qui permet d'afficher les numéros
+	 * @author ashan
+	 *
+	 */
+
 
 	public class Numberlistner implements ActionListener {
 

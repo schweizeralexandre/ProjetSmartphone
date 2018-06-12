@@ -15,6 +15,11 @@ import java.util.ArrayList;
 
 import main.BasicPanel;
 
+/**
+ * Classe qui contient les panels contactslist, contactmodify et contatactpicturepanel, et contactview
+ * @author ashan
+ *
+ */
 
 public class ContactPanel extends BasicPanel {
 
@@ -55,6 +60,11 @@ public class ContactPanel extends BasicPanel {
    
 	}
 	
+/**
+ * méthode qui permet de créer les boutons 
+ * @param nea
+ */
+	
 	public void affichecontact(Container nea)
 	{
 
@@ -83,6 +93,12 @@ public class ContactPanel extends BasicPanel {
 		return contactlist;
 	}
 	
+	/**
+	 * méthode qui déserialise les objets personnes afin de les afficher dans contactlist, dans contactview et dans contact modifiy
+	 * @return
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList<PersonDetails> deserializeObject() throws IOException, ClassNotFoundException 
 	{
@@ -98,7 +114,6 @@ public class ContactPanel extends BasicPanel {
 	public ArrayList<PersonDetails> getPerson() {
 		return person;
 
-	
 	
 	}
 

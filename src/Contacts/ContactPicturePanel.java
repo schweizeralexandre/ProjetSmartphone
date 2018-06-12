@@ -15,6 +15,12 @@ import Gallery_Photos.GalleryPanel;
 import main.BasicPanel;
 import main.ButtonClass;
 
+/**
+ * classe qui permet d'afficher les images de la gallerypanel pour en choisir pour les contacts
+ * @author ashan
+ *
+ */
+
 public class ContactPicturePanel extends BasicPanel{
 	
 	private GalleryPanel gallerypan;
@@ -26,8 +32,7 @@ public class ContactPicturePanel extends BasicPanel{
 	
 	public ContactPicturePanel(ContactModify modify, ContactPanel pan){
 		
-		
-		
+
 		
 		this.modify = modify;
 		this.pan = pan;
@@ -99,6 +104,16 @@ public class ContactPicturePanel extends BasicPanel{
 		
 		
 	}
+	
+	/**
+	 * méthode qui permet de rédimensionner les images sur le contactpicturepanel
+	 * @param img
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	
+	
 	
 	private Image getImageIcon (Image img, int x, int y) {
 		BufferedImage resizedImg = new BufferedImage(x, y, BufferedImage.TYPE_INT_RGB) ;

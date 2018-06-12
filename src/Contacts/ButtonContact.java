@@ -6,10 +6,21 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+/**
+ * classe qui permet de créer les bountons pour les contacts
+ * @author ashan
+ *
+ */
 
 public class ButtonContact extends JButton{
 	
    private int id ;
+   
+   /**
+    * constructeur de la classe buttonContct qui permet d'afficher le nom de la personne sur le bouton
+    * @param name
+    * @param id
+    */
     
 	public ButtonContact(String name,int id)
 	{

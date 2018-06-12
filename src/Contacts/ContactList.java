@@ -15,6 +15,14 @@ import javax.swing.JScrollPane;
 import main.BasicPanel;
 import main.ButtonClass;
 
+/**
+ * Classe qui permet d'afficher la liste des contacts
+ * @author ashan
+ *
+ */
+
+
+
 
 public class ContactList extends BasicPanel{
 	
@@ -78,6 +86,12 @@ public class ContactList extends BasicPanel{
 	public void setSavedContacts(JPanel savedContacts) {
 		this.savedContacts = savedContacts;
 	}
+	
+	/**
+	 * Classe ActionListner qui permet d'ajouter un nouveau contact
+	 * @author ashan
+	 *
+	 */
 
 
 	public class ActionClass implements ActionListener{

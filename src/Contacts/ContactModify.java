@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,6 +27,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import main.BasicPanel;
 import main.ButtonClass;
+
+/**
+ * Classe qui permet d'ajouter et modifier un contact 
+ * @author ashan
+ *
+ */
 
 
 
@@ -52,7 +59,12 @@ public class ContactModify extends BasicPanel{
 	protected int id;
 	ContactPicturePanel panel;
 	
-	
+	/**
+	 * constructeur qui permet de créer le formulaire du contact
+	 * @param contactPanel
+	 * @param cards
+	 * @param person
+	 */
 
 	public ContactModify(ContactPanel contactPanel, CardLayout cards, ArrayList<PersonDetails> person) {
 		
@@ -175,7 +187,11 @@ public class ContactModify extends BasicPanel{
 		this.champs = champs;
 	}
 
-
+   /**
+    * méthode qui permet de personnaliser le bouton annuler et ok
+    * @param but
+    * @return
+    */
 
 	public JButton perzonaliszeButton(JButton but) {
 		
@@ -190,6 +206,12 @@ public class ContactModify extends BasicPanel{
 		
 		return but;
 	}
+	
+	/**
+	 * méthode qui permet de personnaliser le bouton ajout contact
+	 * @param but
+	 * @return
+	 */
     
     public JButton perzonaliszeAddImageButton(JButton but) {
     	
@@ -205,6 +227,11 @@ public class ContactModify extends BasicPanel{
    }
     
 
+    /**
+     * classe ActionListner affecté au bouton annuler, qui permet d'enlever les caractères saisis si on veut pas ajouter nouveau contact
+     * @author ashan
+     *
+     */
 	
     public class ActionClass implements ActionListener{
 
@@ -222,6 +249,12 @@ public class ContactModify extends BasicPanel{
 		}
 		
 	}
+    
+    /**
+     * Classe ActionListner qui permet d'accéder au contactpicture panel pour ajouter une image à un contact
+     * @author ashan
+     *
+     */
 	public class ImageListner implements ActionListener{
 
 		@Override
@@ -241,6 +274,13 @@ public class ContactModify extends BasicPanel{
 		
 		
 	}
+	
+	/**
+	 * classe ActionListner qui permet de gérér le mode on/off du bouton ok
+	 * @author ashan
+	 *
+	 */
+	
 	public class KeyTypedClass implements KeyListener{
 
 		@Override
@@ -272,6 +312,12 @@ public class ContactModify extends BasicPanel{
 	
 	}
 	
+	/**
+	 * classe ActionListner qui permet d'ajouter un nouveau contact et modifier un contact existant
+	 * @author ashan
+	 *
+	 */
+	
 	public class AddContactClass implements ActionListener{
 
 		@Override
@@ -295,7 +341,7 @@ public class ContactModify extends BasicPanel{
 			      if(contactPanel.contactlist.isTestcontact()==false) {
 			    	contactPanel.getPerson().add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
 			    	contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
-					}
+			    					}
 					else {
 						
 						contactPanel.getPerson().get(contactPanel.contactmodify.id).setName(champs[0].getText());
@@ -338,6 +384,14 @@ public class ContactModify extends BasicPanel{
 		}
 		
 	}
+	
+	
+	/**
+	 * méthode qui serialise objets personnes quand on modifie un contact
+	 * @param person
+	 * @throws IOException
+	 */
+	
 	
 	public void serializeObject(ArrayList<PersonDetails> person) throws IOException 
 	{

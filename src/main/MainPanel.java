@@ -12,6 +12,13 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+/**
+ * Class qui permet de créer l'écran principal qui contients les boutons permettant d'accéder aux contacts, 
+ * à la galerie, la météo et à la calculatrice.
+ * 
+ * @author ashan
+ *
+ */
 
 
 
@@ -54,6 +61,11 @@ public class MainPanel extends JPanel {
 		
 
 	}
+	
+	/**
+	 * méthode permettant d'ajouter une image au fond d'écran du smartphone
+	 * 
+	 */
 
 	protected void paintComponent(Graphics g) {
 		try {
@@ -63,8 +75,14 @@ public class MainPanel extends JPanel {
 			// TODO: handle exception
 		}
 	}
-
 	
+	/**
+	 * cette classe action listner permet de passer d'un panel à l'autre quand on clique sur les boutons qui se trouvent sur le panel principal
+	 * @author ashan
+	 * 
+	 *
+	 */
+
      
 	public class ActionClass implements ActionListener{
 

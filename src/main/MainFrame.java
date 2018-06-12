@@ -19,7 +19,7 @@ import Meteo.WeatherPanel;
 public class MainFrame extends JFrame {
 	
 	/**
-	 * Class qui permet ajouter les différents panels
+	 * Class qui permet ajouter les différents panels via cardLayout et qui contient le panel principal "cards"
 	 * @author ashan 
 	 * 
 	 */
