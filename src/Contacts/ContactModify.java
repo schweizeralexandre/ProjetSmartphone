@@ -8,39 +8,27 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.plaf.BorderUIResource;
-
-import Gallery_Photos.GalleryPanel;
 import main.BasicPanel;
 import main.ButtonClass;
-import main.MainFrame;
+
 
 
 public class ContactModify extends BasicPanel{
@@ -54,7 +42,7 @@ public class ContactModify extends BasicPanel{
 	protected JPanel contactDeletePanel = new BasicPanel();
 	protected JButton Deletebut = new ButtonClass("Images/delete.png");
 	private JButton Cancelbut = new JButton("Annuler");
-	private JButton Okbut = new JButton("OK");
+	protected JButton Okbut = new JButton("OK");
 	protected JLabel newContactLabel = new JLabel("Nouveau contact");
 	protected JButton addimage = new JButton("Ajouter une photo");
 	private JLabel nom = new JLabel("Nom");

@@ -5,9 +5,14 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,6 +25,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+
 import main.BasicPanel;
 
 
@@ -58,7 +65,20 @@ public class ContactView extends BasicPanel{
 		  
 		contactmodify.champs[0].setText(contactPanel.getPerson().get(j).getEmail());
 		
-	
+		try {
+	         ImageIcon img = new ImageIcon(person.get(j).getImage());
+	        
+	       //  Image image = img.getImage();
+	         
+	         Image picture  = getImageIcon(img.getImage(), 270, 250);
+	         //img = getImageIcon(img,135,135) ;
+	         
+				contactImage.setIcon(new ImageIcon(picture)) ;
+	         
+			//contactImage.setIcon(img);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	    infoPan.setLayout(new GridLayout(3, 1));
 		
@@ -180,6 +200,7 @@ public class ContactView extends BasicPanel{
 				contactPanel.contactlist.setTestcontact(true);
 				
 				contactmodify.newContactLabel.setVisible(false);
+				contactmodify.Okbut.setEnabled(true);
 				contactmodify.id=j;
 				
 				ImageIcon img = new ImageIcon(person.get(j).getImage());
@@ -221,6 +242,15 @@ public class ContactView extends BasicPanel{
 		personne.remove(person.get(j));
 		obfichier.close();
 		return personne;
+	}
+	
+	private Image getImageIcon (Image img, int x, int y) {
+		BufferedImage resizedImg = new BufferedImage(x, y, BufferedImage.TYPE_INT_RGB) ;
+		Graphics2D g2 = resizedImg.createGraphics() ;
+		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR) ;
+		g2.drawImage(img, 0, 0,x, y, null) ;
+		g2.dispose() ;
+		return resizedImg ;
 	}
 
 	public ArrayList<PersonDetails> getPerson() {

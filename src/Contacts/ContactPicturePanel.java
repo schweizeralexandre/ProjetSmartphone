@@ -2,8 +2,12 @@ package Contacts;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -62,16 +66,16 @@ public class ContactPicturePanel extends BasicPanel{
 				
 				modify.addimage.setIcon(photo.get(j).getIcon());
 			    pan.getPerson().get(modify.id).setImage(images.get(j));
-			    
+			   
 			
                 ImageIcon img = new ImageIcon(pan.getPerson().get(modify.id).getImage());
                 System.out.println(pan.contactview);
-                System.out.println(pan.contactview.contactImage);
+              //  System.out.println(pan.contactview.contactImage);
 	            pan.contactview.contactImage.setIcon(img);
 			    
 			    
 			    
-			    
+	            System.out.println("modify id "+modify.id);
 			    System.out.println(images.get(j));
 				System.out.println("yyooooo");
 				
@@ -84,12 +88,46 @@ public class ContactPicturePanel extends BasicPanel{
 		
 		//images = this.deserialize();
 		
+		for (int i = 0; i < photo.size(); i++) {
+			
+			try {
+		         ImageIcon img = new ImageIcon(images.get(i));
+		        
+		       //  Image image = img.getImage();
+		         
+		         Image picture  = getImageIcon(img.getImage(), 270, 250);
+		         //img = getImageIcon(img,135,135) ;
+		         
+		         photo.get(i).setIcon(new ImageIcon(picture)) ;
+		         
+				//contactImage.setIcon(img);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			
+			
+		}
+		
+		
+		
+		
 		
 		this.add(picpanel);
 		
 		
 		
 	}
+	
+	private Image getImageIcon (Image img, int x, int y) {
+		BufferedImage resizedImg = new BufferedImage(x, y, BufferedImage.TYPE_INT_RGB) ;
+		Graphics2D g2 = resizedImg.createGraphics() ;
+		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR) ;
+		g2.drawImage(img, 0, 0,x, y, null) ;
+		g2.dispose() ;
+		return resizedImg ;
+	}
+
 	
 
 	
