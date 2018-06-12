@@ -28,7 +28,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -39,8 +38,6 @@ import main.MainFrame;
 
 public class GalleryPanel extends JPanel {
 
-
-	//private static CardLayout pictures = new CardLayout();
 
 	private JPanel menuPanel = new JPanel() ;
 	private JPanel galeryPanel = new JPanel() ;
@@ -119,10 +116,9 @@ public class GalleryPanel extends JPanel {
 		add(galeryPanel,CardList[0]) ;
 
 
-
-		//photoPanel.setLayout(new GridLayout(4,4)) ;
-
 		displayImage() ;
+		
+
 
 
 
@@ -139,7 +135,7 @@ public class GalleryPanel extends JPanel {
 	public void setImageGallery(ArrayList<String> imageGallery) {
 		ImageGallery = imageGallery ;
 	}
-	public  void changePanel(String string) {
+	public void changePanel(String string) {
 		// TODO Auto-generated method stub
 		display.show(this, string) ;
 	}
