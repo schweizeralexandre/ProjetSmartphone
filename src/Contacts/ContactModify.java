@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,13 +17,17 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -51,13 +56,16 @@ public class ContactModify extends BasicPanel{
 	private JButton Cancelbut = new JButton("Annuler");
 	private JButton Okbut = new JButton("OK");
 	protected JLabel newContactLabel = new JLabel("Nouveau contact");
-	private JButton addimage = new JButton("Ajouter une photo");
+	protected JButton addimage = new JButton("Ajouter une photo");
 	private JLabel nom = new JLabel("Nom");
 	private JLabel prenom = new JLabel("Prenom");
 	private JLabel mail = new JLabel ("Mail");
 	private JLabel portable = new JLabel("Portable");
 	private JLabel domicile = new JLabel("Domicile");
 	protected JTextField [] champs = new JTextField[5];
+	protected int id;
+	ContactPicturePanel panel;
+	
 	
 
 	public ContactModify(ContactPanel contactPanel, CardLayout cards, ArrayList<PersonDetails> person) {
@@ -152,6 +160,23 @@ public class ContactModify extends BasicPanel{
 		Deletebut.setEnabled(false);
 		contactDeletePanel.add(Deletebut);
 		
+		/*JLabel imgPanel = new JLabel();
+		Image img = null;
+		try {
+			img = ImageIO.read(new File(person.get(contactPanel.contactview.j).getImage()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		img = getResizedPhoto(img);	
+		imgPanel.setIcon(new ImageIcon(img));*/
+		
+		
+		
+		
+		
+		
+		
+		
 		TopNewcontactPanel.add(Cancelbut, BorderLayout.WEST);
 		TopNewcontactPanel.add(newContactLabel, BorderLayout.CENTER);
 		TopNewcontactPanel.add(Okbut, BorderLayout.EAST);
@@ -164,10 +189,22 @@ public class ContactModify extends BasicPanel{
 		
 	   // testSaisie();
 		
+		
+		
+
+		
+
+		
 	}
 	
-	
-    public JTextField[] getChamps() {
+	/*
+    private Image getResizedPhoto(Image img) {
+		// TODO Auto-generated method stub
+		return img.getScaledInstance( 80, 80,  java.awt.Image.SCALE_SMOOTH );
+	}*/
+
+
+	public JTextField[] getChamps() {
 		return champs;
 	}
 
@@ -231,8 +268,8 @@ public class ContactModify extends BasicPanel{
 			
 			if(e.getSource()==addimage) {
 				
-				MainFrame.changePanel("GalleryPanel");
-				
+				//MainFrame.changePanel("GalleryPanel");
+				cards.show(contactPanel, "contactpic");
 				
 				// a faire
 			}
@@ -283,8 +320,7 @@ public class ContactModify extends BasicPanel{
 			
 			if(e.getSource()==Okbut) {
 			//	System.out.println(person.size());
-		    	contactPanel.getPerson().add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
-						
+				
 			    try {
 			    	
 			    	serializeObject(person);
@@ -294,8 +330,36 @@ public class ContactModify extends BasicPanel{
 					
 					e1.printStackTrace();
 				}
-			       contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
+			    
+			   // contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
+			    
+			      if(contactPanel.contactlist.isTestcontact()==false) {
+			    	contactPanel.getPerson().add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
+			    	contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
+					}
+					else {
+						
+						contactPanel.getPerson().get(contactPanel.contactmodify.id).setName(champs[0].getText());
+						contactPanel.getPerson().get(contactPanel.contactmodify.id).setSurname(champs[1].getText());
+						contactPanel.getPerson().get(contactPanel.contactmodify.id).setEmail(champs[2].getText());
+						contactPanel.getPerson().get(contactPanel.contactmodify.id).setNum1(champs[3].getText());
+						contactPanel.getPerson().get(contactPanel.contactmodify.id).setNum2(champs[4].getText());
+						contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
+						contactPanel.contactlist.setTestcontact(true);
+						}
+			    
+			    
+			    
+			    
+			    /*
+			       contactPanel.getPerson().add(new PersonDetails(champs[0].getText(),champs[1].getText(),champs[2].getText(),champs[3].getText(),champs[4].getText()));
+			       contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());*/
 			       cards.show(contactPanel,"contactlist");
+			       
+			       
+			       
+			       
+			       
 			       try {
 					serializeObject(person);
 				} catch (IOException e1) {
@@ -310,6 +374,14 @@ public class ContactModify extends BasicPanel{
 				}
 				
 				Okbut.setEnabled(false);
+				
+				//contactPanel.contactview.contactImage.setIcon(contactPanel.picturepanel.photo.get(0).getIcon());
+				
+				
+				
+				
+					
+				
 				
 				
 				

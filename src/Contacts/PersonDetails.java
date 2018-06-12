@@ -20,7 +20,7 @@ public class PersonDetails implements Serializable {
 		this.email = email;
 		this.num1 = num1;
 		this.num2 = num2;
-		//this.image = image;
+		this.image = image;
 		
 	}
 

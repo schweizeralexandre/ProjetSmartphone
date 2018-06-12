@@ -6,11 +6,16 @@ import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -30,6 +35,8 @@ public class ContactList extends BasicPanel{
    private JButton addcontact = new ButtonClass("Images/addcontact.png");
    private JLabel contactlabel = new JLabel("Contacts");
    private JScrollPane scrollPanel = new JScrollPane(savedContacts);
+   //private ContactModify modify;
+   private boolean testcontact;
 	
 	public ContactList(ContactPanel contactPanel, CardLayout cards, ArrayList<PersonDetails> person) {
 		
@@ -37,7 +44,7 @@ public class ContactList extends BasicPanel{
 		this.contactPanel = contactPanel;
 		this.cards = cards;
 		this.person = person;
-		
+		//this.modify = contactPanel.contactmodify;
 		
 		addcontact.setPreferredSize(new Dimension(28,28));
 		contactlabel.setFont(new Font("Arial", Font.BOLD, 23));
@@ -49,6 +56,8 @@ public class ContactList extends BasicPanel{
 	    addcontactPanel.add(addcontact, BorderLayout.EAST);
 	    addcontactPanel.add(contactlabel, BorderLayout.SOUTH);
 	    this.add(addcontactPanel,BorderLayout.NORTH);
+	    
+	    
 		
 		
 	    savedContacts.setLayout(new BoxLayout(savedContacts, BoxLayout.PAGE_AXIS));	
@@ -57,6 +66,9 @@ public class ContactList extends BasicPanel{
 		
 	    scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	    scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    
+	    
+	   
 	    
 		
 		
@@ -72,7 +84,7 @@ public class ContactList extends BasicPanel{
 		return savedContacts;
 	}
 
-
+   
 	public void setSavedContacts(JPanel savedContacts) {
 		this.savedContacts = savedContacts;
 	}
@@ -83,7 +95,11 @@ public class ContactList extends BasicPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
+			
+			testcontact= false;
 			contactPanel.contactmodify.Deletebut.setEnabled(false);
+			
+			
 			cards.show(contactPanel, "contactmodify");
 		}
 		
@@ -97,6 +113,25 @@ public class ContactList extends BasicPanel{
 	public JScrollPane getScrollPanel() {
 		return scrollPanel;
 	}
+
+
+	public boolean isTestcontact() {
+		return testcontact;
+	}
+
+
+	public void setTestcontact(boolean testcontact) {
+		this.testcontact = testcontact;
+	}
+
+	 public ArrayList<PersonDetails> getPerson() {
+			return person;
+		}
+	
+	  
+	 public void setPerson(ArrayList<PersonDetails> person) {
+	 	this.person = person;
+	 }
 
 
 

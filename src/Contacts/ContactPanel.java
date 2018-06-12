@@ -42,11 +42,12 @@ public class ContactPanel extends BasicPanel {
     //private ContactModify contactmodify = new ContactModify(this,cards,person);
 
 	private ArrayList<PersonDetails> person;
-    private CardLayout cards = new CardLayout();
+    protected CardLayout cards = new CardLayout();
     protected ContactList contactlist;
-    private ContactView contactview; 
+    protected ContactView contactview; 
     protected ContactModify contactmodify;
     private ContactPanel contactpanel;
+    protected ContactPicturePanel picturepanel;
     private int j;
     protected ButtonContact button;
     //protected GalleryPanel myphotos = new GalleryPanel();
@@ -63,9 +64,12 @@ public class ContactPanel extends BasicPanel {
 	//contactview = new ContactView(this,cards,person);
 	contactlist = new ContactList(this,cards,person);
 	contactmodify= new ContactModify(this,cards,person);
+	picturepanel = new ContactPicturePanel(contactmodify, this);
+			
     this.setLayout(cards);
     this.add(contactlist,"contactlist");
     this.add(contactmodify,"contactmodify");
+    this.add(picturepanel, "contactpic");
    //this.add(contactview,"contactview");
    //this.add(topContactMainScreen, BorderLayout.NORTH); 
 
@@ -85,12 +89,15 @@ public class ContactPanel extends BasicPanel {
 			
 		 ButtonContact button = new ButtonContact(person.get(i).getName()+" "+person.get(i).getSurname(), i);
 			nea.add(button);
+			System.out.println(person.get(i).getImage());
 			this.button = button;
 			button.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					add(new ContactView(contactpanel, cards, person,button.getId(),contactmodify),"contactview" );
+					contactview = new ContactView(contactpanel, cards, person,button.getId(),contactmodify);
+					add(contactview,"contactview" );
+					
 					cards.show(contactpanel, "contactview");
 					
 				}
@@ -122,6 +129,12 @@ public class ContactPanel extends BasicPanel {
 	
 	}
 
+	public void setPerson(ArrayList<PersonDetails> person) {
+		this.person = person;
+	}
+	
+	
+
 	
 	/*class deletecontact implements ActionListener{
 
@@ -138,14 +151,7 @@ public class ContactPanel extends BasicPanel {
 			
 			
 		}*/
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 	//}

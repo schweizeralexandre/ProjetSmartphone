@@ -13,9 +13,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import main.BasicPanel;
@@ -25,16 +27,16 @@ public class ContactView extends BasicPanel{
 	
 	private ContactPanel contactPanel;
 	private CardLayout cards;
-	final ArrayList<PersonDetails> person;
+	private ArrayList<PersonDetails> person;
 	private JPanel topPan = new BasicPanel();
 	private JPanel centerpan = new BasicPanel();
 	private JPanel infoPan = new BasicPanel();
 	private JButton contacts = new JButton("Contacts");
     private JButton modifier = new JButton("Modifier");
-    private JLabel contactImage = new JLabel();
+    protected JLabel contactImage = new JLabel();
     protected JLabel contactName = new JLabel();
     private JLabel[] contactInfo = new JLabel[3];
-    private int j;
+    protected int j;
 	private ContactModify contactmodify;
 	
 
@@ -56,7 +58,7 @@ public class ContactView extends BasicPanel{
 		  
 		contactmodify.champs[0].setText(contactPanel.getPerson().get(j).getEmail());
 		
-		
+	
 		
 	    infoPan.setLayout(new GridLayout(3, 1));
 		
@@ -86,6 +88,21 @@ public class ContactView extends BasicPanel{
 	    
 	    
 	    
+	    	//contactmodify.cpt++;
+
+
+
+        for( ActionListener al : contactmodify.Deletebut.getActionListeners() ) {
+    	contactmodify.Deletebut.removeActionListener( al );
+    	
+        }
+        
+       
+
+        
+	
+ 
+        
 	    contactmodify.Deletebut.addActionListener(new ActionListener() {
 			
 			@Override
@@ -93,13 +110,24 @@ public class ContactView extends BasicPanel{
 				// TODO Auto-generated method stub
 				
 				
-				contactPanel.contactlist.savedContacts.remove(contactPanel.button);
+				contactPanel.contactlist.getPerson().remove(j);
 				
+				System.out.println(j);
+				contactPanel.affichecontact(contactPanel.contactlist.savedContacts);
+				
+				 try {
+			        	
+			        	contactmodify.serializeObject(contactPanel.getPerson());
+			        	
+			    		
+			    	} catch (IOException e1) {
+			    		
+			    		e1.printStackTrace();
+			    	}
+			           contactPanel.affichecontact(contactPanel.getContactlist().getSavedContacts());
+			            
 		
 				cards.show(contactPanel,"contactlist");
-				
-				
-		
 
 			}
 			
@@ -149,8 +177,14 @@ public class ContactView extends BasicPanel{
 			
 			if(e.getSource()==modifier) {
 				
+				contactPanel.contactlist.setTestcontact(true);
 				
 				contactmodify.newContactLabel.setVisible(false);
+				contactmodify.id=j;
+				
+				ImageIcon img = new ImageIcon(person.get(j).getImage());
+				contactImage.setIcon(img);
+			
 				contactmodify.champs[0].setText(contactPanel.getPerson().get(j).getName());
 				contactmodify.champs[1].setText(contactPanel.getPerson().get(j).getSurname());
 				contactmodify.champs[2].setText(contactPanel.getPerson().get(j).getEmail());
@@ -189,8 +223,15 @@ public class ContactView extends BasicPanel{
 		return personne;
 	}
 
-	
-	
+	public ArrayList<PersonDetails> getPerson() {
+		return person;
+	}
+
+	public void setPerson(ArrayList<PersonDetails> person) {
+		this.person = person;
+	}
+
+
 	
 	
 	
