@@ -1,4 +1,4 @@
-package Calculator;
+package Junit;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import main.BasicPanel;
 
-public class CalculatorPanel extends BasicPanel {
-
+public class CalculatorPanelTest extends BasicPanel {
+	
 	private CalculatorButton button[] = new CalculatorButton[16];
 	private JButton zero = new JButton();
 	private JButton comma = new CalculatorButton();
@@ -26,7 +26,7 @@ public class CalculatorPanel extends BasicPanel {
 	private boolean clicOperateur = false, update = false;
 	private String operateur;
 
-	public CalculatorPanel() {
+	public CalculatorPanelTest() {
 
 		buttonsPan.setLayout(new GridLayout(4, 4));
 
@@ -154,7 +154,7 @@ public class CalculatorPanel extends BasicPanel {
 
 	}
 
-	public void calculOperateurs() {
+	private void calculOperateurs() {
 
 		if (operateur == "+") {
 
