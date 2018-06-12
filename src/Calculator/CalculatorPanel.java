@@ -22,7 +22,7 @@ public class CalculatorPanel extends BasicPanel {
 	private JPanel champPan = new BasicPanel();
 	private JLabel field = new JLabel("0");
 	private String[] values = { "AC", "+/-", "%", "÷", "7", "8", "9", "×", "4", "5", "6", "-", "1", "2", "3", "+"};
-	private double result;
+	private double result = 0;
 	private boolean clicOperateur = false, update = false;
 	private String operateur;
 
